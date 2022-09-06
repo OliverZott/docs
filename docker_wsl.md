@@ -45,8 +45,18 @@
 - [Docker](https://www.youtube.com/watch?v=0oEsMwSxBsk)
 - [Docker](https://www.youtube.com/watch?v=WcQ3-M4-jik)
 
-<!-- ---------------------------------------------------------------------------------------------------------------------------------- -->
-## ProjectService
+# Commands
+
+- `docker run Docker run` [doc](https://docs.docker.com/engine/reference/run/)
+- `docker cp` [doc](https://docs.docker.com/engine/reference/commandline/cp/)
+- `docker build` [doc](https://docs.docker.com/engine/reference/commandline/build/)
+- `docker run -d -p 80:80 docker/getting-started` [tut](http://localhost/tutorial/)
+
+# Examples
+
+With running Docker Desktop App `http://localhost/tutorial/`
+
+# ProjectService
 
 1. WSL & Docker install
 1. Clone repo & steps from wiki
