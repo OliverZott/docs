@@ -1,8 +1,10 @@
-# Install Docker and WSL2
+# Docker
 
 - <https://docs.docker.com/desktop/windows/wsl/>
 
-## WSL
+## Prerequisites / Installation
+
+### WSL2 (Windows)
 
 - <https://docs.microsoft.com/en-us/windows/wsl/install>
 
@@ -18,15 +20,7 @@
 - Kernel Update
   - <https://docs.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package>
 
-## Docker
-
-- <https://docs.docker.com/desktop/windows/wsl/>
-- docker error message `docker-users`
-  - [Link](https://icij.gitbook.io/datashare/faq-errors/you-are-not-allowed-to-use-docker-you-must-be-in-the-docker-users-group-.-what-should-i-do)
-
--
-
-## VS Code Linux DevEnv
+### VS Code Linux DevEnv
 
 - <https://docs.microsoft.com/en-us/windows/wsl/setup/environment>
 - <https://code.visualstudio.com/api/advanced-topics/remote-extensions#architecture-and-extension-types>
@@ -45,18 +39,54 @@
 - [Docker](https://www.youtube.com/watch?v=0oEsMwSxBsk)
 - [Docker](https://www.youtube.com/watch?v=WcQ3-M4-jik)
 
+## ERRORS
+
+- docker error message `docker-users`
+  - [Link](https://icij.gitbook.io/datashare/faq-errors/you-are-not-allowed-to-use-docker-you-must-be-in-the-docker-users-group-.-what-should-i-do)
+
 # Commands
 
-- `docker run Docker run` [doc](https://docs.docker.com/engine/reference/run/)
-- `docker cp` [doc](https://docs.docker.com/engine/reference/commandline/cp/)
-- `docker build` [doc](https://docs.docker.com/engine/reference/commandline/build/)
-- `docker run -d -p 80:80 docker/getting-started` [tut](http://localhost/tutorial/)
+- `docker image ls`
+- `docker  ps` = `docker container ls`
+- `docker ps -a` ...show all (also not running)
+- `docker run name/id`  [doc](https://docs.docker.com/engine/reference/run/)
+- `docker stop name/id`
+
+- Copy / Build
+  - `docker cp` [doc](https://docs.docker.com/engine/reference/commandline/cp/)
+  - `docker build` [doc](https://docs.docker.com/engine/reference/commandline/build/)
+
+- Compose
+  - `docker-compose up --build`
+    - up ... for syncing and server start
+    - --build ... to build container the first time
+
+- Remove container and image (remove container before image)
+  - `docker container rm name/id` or `docker rm name/id`
+  - `docker image rm name/id` or `docker rmi name/id`
+
+- Stop all containers:
+  - `docker container ls -aq` ... generates list of all containers
+  - `docker container stop $(docker container ls -aq)`
+
+## Flags
+
+- `-a` or `--attach` ... Attach STDOUT/STDERR and forward signals
+- `-p` ... Publish all exposed ports to the host interfaces
+- `-d` ...  run the container in the background in a “detached” mode
 
 # Examples
 
+## Python Example
+
+- <https://github.com/OliverZott/python-training/tree/master/youtube-arjancodes/docker-usage>
+  - `docker run -d -p 80:80 docker/getting-started` [tut](http://localhost/tutorial/)
+
+- <https://github.com/OliverZott/docker-examples>
+
 With running Docker Desktop App `http://localhost/tutorial/`
 
-# ProjectService
+## ProjectService
 
 1. WSL & Docker install
 1. Clone repo & steps from wiki
