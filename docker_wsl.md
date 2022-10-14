@@ -44,7 +44,7 @@
 - docker error message `docker-users`
   - [Link](https://icij.gitbook.io/datashare/faq-errors/you-are-not-allowed-to-use-docker-you-must-be-in-the-docker-users-group-.-what-should-i-do)
 
-# Commands
+# Commands - Basic
 
 - `docker image ls`
 - `docker  ps` = `docker container ls`
@@ -74,6 +74,54 @@
 - `-a` or `--attach` ... Attach STDOUT/STDERR and forward signals
 - `-p` ... Publish all exposed ports to the host interfaces
 - `-d` ...  run the container in the background in a “detached” mode
+- `--rm`
+- `-it` ... interactive mode
+
+# Commands - Container
+
+## Tags
+
+- look up at <https://hub.docker.com>
+- `docker run redis:latest`
+
+## Inputs
+
+- container runs in **non-interactive** mode.
+- `docker run -it kodekloud/simple-prompt-docker`  ... **-it** for interactive Input and Terminal output from container.
+
+## Attach
+
+To attach to running container in  background:
+
+- `docker run -d ubuntu sleep 5000`  ... **-d** for background
+- `docker attach <id/name>`
+
+## Exec
+
+To run command in running container
+
+- `docker exec <contianer_name/id> env` ... to see environment variables
+
+## Port Mapping
+
+**-p**
+
+- check port: `docker run kodekloud/simple-webapp` --> e.g. " port 8080"
+- `docker run -p 80:8080 kodekloud/simple-webapp` ... host / container
+- check browser: `localhost:80`
+
+## Volume Mapping
+
+**-v**
+
+Docker container has own isolated file-system. When container is removed--> files lost.  To persist data, map to outside Host directory.
+
+- `docker run -v /host/dir/path:/container/dir/path mysql` ... host / container
+
+## Inspect / Log Container
+
+- `docker inspect <id//name>`
+- `docker logs`
 
 # Examples
 
