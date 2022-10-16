@@ -72,12 +72,17 @@
 ## Flags
 
 - `-a` or `--attach` ... Attach STDOUT/STDERR and forward signals
-- `-p` ... Publish all exposed ports to the host interfaces
+- `-p` ... Publish all exposed ports to the host interfaces   `host:container`
 - `-d` ...  run the container in the background in a “detached” mode
-- `--rm`
+- `--rm` ... Automatically remove the container when it exits
 - `-it` ... interactive mode
+- `--name` ... Assign a name to the container
 
 # Commands - Container
+
+## Example
+
+- `docker run --rm -d -p 15672:15672 -p 5672:5672 --name my_rabbit rabbitmq:3-management`
 
 ## Tags
 
