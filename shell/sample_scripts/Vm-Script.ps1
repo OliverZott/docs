@@ -1,7 +1,6 @@
-$vmName = vi-tst-go1
+$vmName = vm-name
 $machine = Get-VM -Name $vmName
 $machine.Heartbeat
-
 
 
 $errorInvoke = $null

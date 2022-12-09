@@ -54,3 +54,9 @@ Query on table of current connected db.
 ```shell
 SELECT * FROM "<tableName>";
 ```
+
+Connect to Postgresql DOCKER Container
+
+```shell
+docker exec -it <postgres-container> /bin/sh
+```
