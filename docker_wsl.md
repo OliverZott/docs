@@ -75,7 +75,7 @@
 - `-p` ... Publish all exposed ports to the host interfaces   `host:container`
 - `-d` ...  run the container in the background in a “detached” mode
 - `--rm` ... Automatically remove the container when it exits
-- `-it` ... interactive mode
+- `-it` or `i` ... interactive mode
 - `--name` ... Assign a name to the container
 
 # Commands - Container
@@ -83,6 +83,7 @@
 ## Example
 
 - `docker run --rm -d -p 15672:15672 -p 5672:5672 --name my_rabbit rabbitmq:3-management`
+- `docker run -d -i --name pythondevs python bash` ... run python image detached interactive and start the bash once its started
 
 ## Tags
 

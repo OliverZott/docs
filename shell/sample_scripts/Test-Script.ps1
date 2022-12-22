@@ -2,7 +2,7 @@
 .Synopsis
     Test script.
 .Example
-    .\Test-Script.ps1 -v vi-tst-go1 -s clean
+    .\Test-Script.ps1 -v <VirtualMachineName> -s clean
 #>
 
 param (

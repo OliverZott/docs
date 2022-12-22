@@ -1,4 +1,4 @@
-$vmName = vi-tst-go1
+$vmName = <VirtualMachineName>
 $machine = Get-VM -Name $vmName
 $machine.Heartbeat
 
