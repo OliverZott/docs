@@ -61,3 +61,9 @@ Show data storage location
 ```shell
 postgres=# show data_directory; 
 ```
+
+Connect to Postgresql DOCKER Container
+
+```shell
+docker exec -it <postgres-container> /bin/sh
+```

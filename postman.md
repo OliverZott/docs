@@ -1,6 +1,6 @@
 # Testing
 
-[docs][https://www.postman.com/automated-testing/]
+[docs](https://www.postman.com/automated-testing/)
 
 - **Collection runs** --> automate  API testing
 - **Monitor**  --> schedule collection runs

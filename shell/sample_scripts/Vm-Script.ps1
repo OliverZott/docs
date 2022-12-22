@@ -1,7 +1,6 @@
-$vmName = <VirtualMachineName>
+$vmName = VirtualMachineName
 $machine = Get-VM -Name $vmName
 $machine.Heartbeat
-
 
 
 $errorInvoke = $null

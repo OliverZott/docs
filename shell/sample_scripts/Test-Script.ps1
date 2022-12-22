@@ -2,7 +2,7 @@
 .Synopsis
     Test script.
 .Example
-    .\Test-Script.ps1 -v <VirtualMachineName> -s clean
+     .\Test-Script.ps1 -s SNAPSHOT -vmn VMNAME
 #>
 
 param (

@@ -46,6 +46,9 @@
 
 # Commands - Basic
 
+- `docker search <term>` ... search for images on dockerhub
+- `docker pull` ... pull image from dockerhub
+
 - `docker image ls`
 - `docker  ps` = `docker container ls`
 - `docker ps -a` ...show all (also not running)
