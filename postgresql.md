@@ -21,6 +21,7 @@
 ``` shell
 psql -V
 psql -U postgres
+psql -h <IP_Address> -p <port_no> -d <database_name> -U <DB_username> -W
 ```
 
 or Linux:
