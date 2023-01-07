@@ -76,10 +76,12 @@
 
 - `-a` or `--attach` ... Attach STDOUT/STDERR and forward signals
 - `-p` ... Publish all exposed ports to the host interfaces   `host:container`
-- `-d` ...  run the container in the background in a “detached” mode
+- `-d` ...  Detached mode: run the container in the background
 - `--rm` ... Automatically remove the container when it exits
-- `-it` or `i` ... interactive mode
-- `--name` ... Assign a name to the container
+- `-it` or `i` ... Interactive mode
+- `--name` ... Assign a name to the container [link](https://docs.docker.com/engine/reference/run/#name---name)
+- `-p` ... local:docker (port routing) [link](https://docs.docker.com/engine/reference/run/#expose-incoming-ports)
+- `-e` ... Environment variable set [link](https://docs.docker.com/engine/reference/run/#env-environment-variables)
 
 # Commands - Container
 

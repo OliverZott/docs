@@ -1,10 +1,12 @@
-# Shell basics
+# Shell Basics
 
 ## windows powershell
 
 - `$env:tmp`
 - `gci env:`
 - `dir env:appdata`
+- `setx ENV_VAR env_var_value`  ... set env var
+- `[Environment]::SetEnvironmentVariable("TEST", $null ,"User")`  ... delete env var [link](https://www.digitalcitizen.life/remove-edit-clear-environment-variables/)
 
 - [env vars docu](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-7.2)
 - [computer information](https://learn.microsoft.com/en-us/powershell/scripting/samples/collecting-information-about-computers?view=powershell-7.2)
