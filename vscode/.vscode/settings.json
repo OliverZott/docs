@@ -1,0 +1,17 @@
+{
+    "editor.formatOnSave": true,
+    "[json]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "vscode.json-language-features",
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    "[cpp]": {
+        "editor.formatOnSave": false,
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "[python]": {
+        "editor.formatOnSave": false,
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    }
+}
