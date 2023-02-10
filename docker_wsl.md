@@ -11,14 +11,17 @@
 - `Turn Windows Features OnOff`
   - *Virtual Machine Platform*
   - *Windows Subsystem For Linux*
-- `Install distribution`
-  - via Store
-  - `wsl -l -v`
-  - `wsl --list --online`
-  - `wsl --install -d <DistroName>`
-  - `wsl -l -v`
 - Kernel Update
   - <https://docs.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package>
+- `Install distribution`
+  - via Store or Terminal:
+
+```bash
+`wsl -l -v`
+`wsl --list --online`
+`wsl --install -d <DistroName>`
+`wsl -l -v`
+```
 
 ### VS Code Linux DevEnv
 

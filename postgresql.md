@@ -76,3 +76,17 @@ docker exec -it <postgres-container> /bin/sh
 - Install: `sudo apt install postgresql`
 - Connect: `sudo -u postgres psql`
 - Install PgAdmin: <https://www.pgadmin.org/download/pgadmin-4-apt/>
+
+## Queries
+
+```SQL
+SELECT * FROM public."Jobs"
+WHERE "Identifikator" ILIKE '%olli%' 
+OR "ProjectId" = '123'
+ORDER BY "Id" ASC 
+```
+
+```SQL
+DELETE FROM public."Jobs"
+WHERE "Identifikator" ILIKE '%olli%' 
+```
