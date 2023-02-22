@@ -4,6 +4,7 @@
 
 - `$env:tmp`
 - `gci env:`
+- `gci env: | Select-String "java_"`
 - `dir env:appdata`
 - `setx ENV_VAR env_var_value`  ... set env var
 - `[Environment]::SetEnvironmentVariable("TEST", $null ,"User")`  ... delete env var [link](https://www.digitalcitizen.life/remove-edit-clear-environment-variables/)
