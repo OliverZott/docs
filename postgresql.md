@@ -53,6 +53,15 @@ postgres=# \d
 postgres=# \du
 ```
 
+Show table Info
+
+```bash
+psql -U postgres
+\l 
+\c <dbname>
+SELECT table_name, column_name, data_type FROM information_schema.columns WHERE table_name='<tablename>';
+```
+
 Query on table of current connected db.
 
 ```shell
