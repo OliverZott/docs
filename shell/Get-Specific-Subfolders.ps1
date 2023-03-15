@@ -17,5 +17,5 @@ if ($foldersToDelete.count -eq 0) {
 
 foreach ($folder in $foldersToDelete) {
     Write-Output "Removing $folder ..." 
-    Remove-Item $folder 
+    # Remove-Item $folder -Recurse -Force
 }
