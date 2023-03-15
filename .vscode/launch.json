@@ -10,7 +10,7 @@
             "request": "launch",
             "script": "${file}",
             "args": [
-                "C:\\Dev\\ProjectService\\src\\"
+                "C:\\<repo_name>"
             ]
         }
     ]
