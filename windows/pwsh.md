@@ -5,4 +5,5 @@
 
 - `winget search Microsoft.PowerShell`
 - `winget upgrade Microsoft.PowerShell`
+- `winget install --id Microsoft.Powershell --source winget --force`
 - `winget upgrade Microsoft.PowerShell` ... to see download link and details
