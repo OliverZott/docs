@@ -116,3 +116,15 @@ Basics:
 - Pub/Sub pattern
 - Message Broker
 - Reactive Programming
+
+# CrossbarIo / WAMP
+
+ChatGPT answer
+
+```txt
+Crossbar.io is an open-source, real-time application router and message broker that implements the Web Application Messaging Protocol (WAMP). In other words, Crossbar.io is a software component that provides a messaging infrastructure for building distributed and scalable real-time systems using WAMP.
+
+WAMP, on the other hand, is a WebSocket-based protocol for real-time communication between clients and servers. It is designed to provide a standardized way for web and mobile applications to communicate with back-end systems, enabling developers to build scalable and reliable real-time systems that can handle large volumes of data.
+
+So, in essence, Crossbar.io is an implementation of the WAMP protocol. It provides features such as routing, message distribution, and authentication, making it easy for developers to build real-time applications using WAMP. The WAMP protocol is the foundation on which Crossbar.io is built, and it specifies the rules for how clients and servers can communicate with each other in a real-time, bidirectional manner.
+```
