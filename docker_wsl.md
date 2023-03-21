@@ -21,6 +21,7 @@
 `wsl --list --online`
 `wsl --install -d <DistroName>`
 `wsl -l -v`
+`wsl.exe --update`
 ```
 
 ### VS Code Linux DevEnv
@@ -70,6 +71,7 @@
 - Remove container and image (remove container before image)
   - `docker container rm name/id` or `docker rm name/id`
   - `docker image rm name/id` or `docker rmi name/id`
+  - `docker container prune` ...Remove ALL stopped containers
 
 - Stop all containers:
   - `docker container ls -aq` ... generates list of all containers
