@@ -24,11 +24,13 @@
 
 - `npm init -y`
 - `npm list -g`
+- `npm update -g`
 - `npm install -g npm@latest`
 - `npm install -g typescript@latest`
 
 ### Update Dependecies
 
+- `npm outdated`
 - `npm update`
 - `npm audit --fix`
 - `npm install <package>@latest`

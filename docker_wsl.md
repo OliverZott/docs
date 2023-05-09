@@ -72,6 +72,8 @@
   - `docker container rm name/id` or `docker rm name/id`
   - `docker image rm name/id` or `docker rmi name/id`
   - `docker container prune` ...Remove ALL stopped containers
+  - `docker rm -f $(docker ps -a -q)`  ...remove all containers [flags](https://docs.docker.com/engine/reference/commandline/ps/)
+  - `docker volume rm $(docker volume ls -q)`  ...remove all volumes
 
 - Stop all containers:
   - `docker container ls -aq` ... generates list of all containers
