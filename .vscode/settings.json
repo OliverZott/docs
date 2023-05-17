@@ -1,0 +1,56 @@
+// Used to store VS Code settings (normally in appdata)
+{
+    "workbench.colorTheme": "Default Dark Modern",
+    "workbench.startupEditor": "none",
+    "python.defaultInterpreterPath": "C:\\Users\\o.zott\\AppData\\Local\\Microsoft\\WindowsApps\\python3.10.exe",
+    "security.workspace.trust.untrustedFiles": "open",
+    "[markdown]": {
+        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+    },
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "workbench.tree.indent": 20,
+    "sonarlint.rules": {
+        "python:S125": {
+            "level": "off"
+        },
+        "typescript:S1186": {
+            "level": "off"
+        },
+        "typescript:S1301": {
+            "level": "off"
+        }
+    },
+    "explorer.sortOrder": "type",
+    "editor.minimap.enabled": false,
+    "window.commandCenter": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "editor.inlayHints.padding": true,
+    "editor.inlayHints.fontSize": 12,
+    "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+    "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
+    "javascript.inlayHints.parameterTypes.enabled": true,
+    "git.enableSmartCommit": true,
+    "redhat.telemetry.enabled": true,
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "gitlens.hovers.currentLine.over": "line",
+    "debug.javascript.autoAttachFilter": "always",
+    "gitlens.statusBar.enabled": false,
+    "gitlens.defaultDateStyle": "absolute",
+    "gitlens.currentLine.enabled": false,
+    "gitlens.codeLens.enabled": false,
+    "gitlens.hovers.enabled": false,
+    "explorer.confirmDelete": false,
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "editor.formatOnSave": true,
+    "C_Cpp.default.cppStandard": "c++20",
+    "C_Cpp.default.cStandard": "c17",
+    "editor.fontLigatures": false,
+    // Nerd Fonts for customized PWSH
+    "editor.fontFamily": "'CaskaydiaCove Nerd Font Mono'",
+    "terminal.integrated.fontSize": 13,
+    "terminal.integrated.fontWeight": "normal"
+}
