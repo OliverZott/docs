@@ -5,6 +5,7 @@
 - clear screen
   - `cls`
   - ctrl+l
+- `findstr /i <STRING>` ...ignore case sensitivity
 - `ipconfig /all | findstr DNS`
 - `gci env: | findstr Prog`
 - Copy to clipboard: `gci env: | clip`
