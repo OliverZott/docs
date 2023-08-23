@@ -13,7 +13,9 @@
 
     > .\DeleteSubfolders.ps1 -Path "C:\Example"
     > .\DeleteSubfolders.ps1 -Path "C:\Example" -y
+    > .\DeleteSubfolders.ps1 -Path "C:\Example" -FolderName "venv", "test"
     > Get-Help .\DeleteSubfolders.ps1
+    > Get-Help C:\repos\docs\windows\shell\shell_scripts\DeleteSubfolders.ps1 -Examples
 
 .NOTES
     -
@@ -27,13 +29,16 @@ param (
     [Parameter(Mandatory = $true)]
     [ValidateScript({ Test-Path $_ -PathType 'Container' })]
     [string]$Path,
-    [switch]$y
+    [switch]$y,
+
+    [Parameter(Mandatory = $false)]
+    [string[]]$FolderName = @("bin", "obj")
 )
 
-$foldersToDelete = Get-ChildItem -Path $Path -include bin, obj -Recurse -Directory | Select-Object -ExpandProperty FullName
+$foldersToDelete = Get-ChildItem -Path $Path -include $FolderName -Recurse -Directory | Select-Object -ExpandProperty FullName
 
 if ($foldersToDelete.Count -eq 0) {
-    Write-Host "No folders named 'bin' or 'obj' found."
+    Write-Host "No folders named $FolderName found."
 }
 else {
 
