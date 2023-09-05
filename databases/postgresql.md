@@ -38,19 +38,21 @@ to quit:
 postgres=# \q
 ```
 
-Show databases, connect to database and show tables:
+Show databases, connect/disconnect to database and show tables:
 
 ```shell
 postgres=# \l
 postgres=# \c <dbName>
+postgres=# \c postgres
 postgres=# \dt
 ```
 
-Show full history, show useres
+Show full history, show useres, run script
 
 ```shell
 postgres=# \d
 postgres=# \du
+postgres=# \i myInsertFile.sql
 ```
 
 Show table Info
