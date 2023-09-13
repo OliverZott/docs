@@ -1,0 +1,76 @@
+# Docker
+
+<https://www.youtube.com/channel/UC0NErq0RhP51iXx64ZmyVfg>
+<https://www.udemy.com/course/docker-mastery/learn/lecture/32367182#overview>
+<https://github.com/bretfisher/udemy-docker-mastery>
+
+## Docker Concepts
+
+- Why docker
+  - Isolation
+  - Envirnomnets
+  - Speed (lifecycle)
+
+- Image - registry - container ==> Build - Ship - Run
+- client (cli command) vs server
+
+### Image
+
+- cotains of layers (depending on host os?!)
+
+### Registry
+
+- for docker image retribution
+
+## Examples
+
+Docker installation or *<https://labs.play-with-docker.com>*
+
+### Example 1
+
+```bash
+docker version  # version history
+clear  # clear terminal
+docker run -d -p 8800:80 httpd  # -d detached -p port download apache image layers, create file systems and run in its own namespace
+curl localhost:8800
+```
+
+### Example 2
+
+```bash
+# container
+docker container run --publish 80:80 --detach --name webhost nginx  # 80 is default localhost port
+curl localhost
+docker container ls -a
+curl localhost
+docker container logs webhost
+docker container top webhost
+docker container stop <container id>
+```
+
+## Docker Commands
+
+- new version (management commands):
+  - docker - command - subcommand
+  - e.g. `docker container run`
+- old version:
+  - docker - command
+  - e.g. `docker run`
+
+```bash
+# basic infos
+clear 
+curl localhost:8800
+docker
+docker version
+docker info
+```
+
+```bash
+# container
+docker container run --publish 80:80 --detach --name webhost nginx  # 80 is default localhost port
+docker container ls -a
+curl localhost
+docker container logs webhost
+docker container stop <container id>
+```
