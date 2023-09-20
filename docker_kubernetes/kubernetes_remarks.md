@@ -58,3 +58,25 @@ A Node is a machine that runs these Pods. It can be a physical machine or a virt
 - if a pod fails, it will create a new one
 - load balancig & scaling
 - `rd-definition.yaml` - definition file for replication controller
+
+## Deployment
+
+- similar to replica set file! (just different kind!)
+- above in hierarchy
+- automatically creates
+  - replica sets
+  - pods
+- `deployment-definition.yaml` - definition file for deployment
+
+### Rollout and Versioning
+
+- On Rollouts Revision number is increased
+- Deployment strategy
+  - Recreate - destroy all pods and create new ones
+  - Rolling Update - destroy one pod and create new one, then next one, etc.
+- `kubectl rollout status deployment/myapp-deployment` - check status of rollout
+- `kubectl rollout history deployment/myapp-deployment` - check history of rollout
+- `kubectl rollout undo deployment/myapp-deployment` - undo rollout
+- For updating:
+  - `kubectl apply -f deployment-definition.yaml` - apply new definition file
+  - `kubectl set image deployment/myapp-deployment nginx=nginx:1.9.1` - set new image for deployment BUT definition yaml has differnet version!!
