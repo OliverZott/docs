@@ -33,19 +33,50 @@ docker container stop <container id>
 ### Example 3
 
 ```bash
-# Networks
-docker container run -d --name nginx_1  nginx
+# Networks / DNS resolution by namespace
+docker container run -d --name nginx_1  nginx:alpine
 docker network ls
 docker network inspect bridge
 
 docker network create skynet  # create network
-docker container run -d --name nginx_2 --network skynet nginx
+docker container run -d --name nginx_2 --network skynet nginx:alpine
 docker network inspect skynet
 
 docker network connect skynet nginx_1  # connect container to network
 docker container inspect nginx_1  # now on 2 networks
 
+docker container exec -it nginx_1 ping nginx_2  # can ping without knowing IP - DNS resolution by namespace/hostnames
+
 docker network disconnect skynet nginx_1  # disconnect container from network
+```
+
+### Example 4
+
+```bash
+# Images & Layers
+docker image ls  # list images
+docker image tag nginx test/nginx
+docker login  # docker logout if necessary
+docker push test/nginx  # mot working - not logged in
+```
+
+### Example 5
+
+```bash
+# Volumes
+docker container run -d --name mysql-container -e MYSQL_ALLOW_EMPTY_PASSWORD=True -v mysql-db:/var/lib/mysql mysql # -v named volume, everything in fron of ":" is volume name
+docker container inspect mysql-container
+docker volume inspect mysql-db
+
+docker container run -d --name my_pg1 -e POSTGRES_PASSWORD=mysecretpassword -v psql-data:/var/lib/postgresql/data postgres:9.6.1-alpine
+
+# Bind Mounting
+docker container run -d --name nginx -p 80:80 -v $(pwd):/usr/share/nginx/html nginx  # in current sample directory (windows: ${pwd})
+touch test.txt
+echo "hello there" > test.txt
+docker container exec -it nginx bash # in 2nd terminal window ...go to 
+cd /usr/share/nginx/html 
+cat test.txt
 ```
 
 ## Docker Commands
@@ -77,7 +108,7 @@ docker container stop <container id>
 ```
 
 ```bash
-# contianer monitoring
+# container monitoring
 docker container top <container id>  # process list in one container
 docker container inspect <container id>  # details of one container config
 docker container stats OPTIONAL:<container id>  # performance stats for all containers
@@ -104,7 +135,21 @@ docker network disconnect <network name> <container id>  # disconnect container 
 ```
 
 ```bash
+# Images & Layers
+docker image ls  # list images
+docker image history <image id>  # show layers of changes made in image
+docker image inspect <image id>  # show details of image
+
+# tags and push to docker hub
+docker image tag <image id> <new image name>  # tag image
 ```
 
 ```bash
+# Clean Up
+docker image prune  # clean dangling images
+docker image prune -a  # clean all unused images
+docker system prune
+docker volume prune
+docker system df
+docker network  prune
 ```

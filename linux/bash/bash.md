@@ -9,7 +9,7 @@
 
 - `code ~/.bashrc` ... edit bashrc (scriptfile, running on login, containing config for terminal session)
 - add `ls -l --color=auto` to bashrc to enable colored listed output for `ls` command
-  - alias ls="ls -l --color=auto"
+  - `alias ls="ls -l --color=auto"`
 - `alias kc='kubectl'`
 - `source ~/.bashrc` ... reload bashrc to take effect immediately
 
