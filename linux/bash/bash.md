@@ -18,6 +18,16 @@
 - `printenv` ...show env vars [link](https://www3.ntu.edu.sg/home/ehchua/programming/howto/Environment_Variables.html#zz-3.1)
 - `export MY_ENV_VAR=test`  ...set/overwrite env var [link](https://linuxhandbook.com/envsubst-command/)
 
+### show/switch/beautify shell
+
+Zsh is definitely more feature-rich and customizable, which is why it’s the default shell in MacOS terminals. However, Bash is more popular and widely used, especially for scripting purposes.
+
+- `echo $0`
+- `echo $SHELL`
+- `chsh -s /bin/bash` ... change shell to bash
+- <https://javascript.plainenglish.io/save-your-time-when-using-the-terminal-with-zsh-and-oh-my-zsh-8e51485afa91>
+- <https://www.cyberciti.biz/faq/change-my-default-shell-in-linux-using-chsh/>
+
 ## imagemagick
 
 <https://imagemagick.org/script/convert.php>
