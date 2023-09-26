@@ -1,0 +1,28 @@
+# example: drupal with postgresql and volume for themes
+
+services:
+
+  drupal:
+    image: drupal:9
+    volumes:
+      - drupal-themes:/var/www/html/themes
+      - drupal-profiles:/var/www/html/profiles
+      - drupal-modules:/var/www/html/modules
+      - drupal-sites:/var/www/html/sites
+    ports:
+      - 8080:80
+
+  postgres:
+    image: postgres:14
+    environment:
+      POSTGRESS_PASSWORD: pgpw
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+
+volumes:
+  drupal-themes:
+  drupal-profiles:
+  drupal-modules:
+  drupal-sites:
+  db-data:
