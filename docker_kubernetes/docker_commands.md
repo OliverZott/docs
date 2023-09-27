@@ -15,6 +15,7 @@ docker version  # version history
 clear  # clear terminal
 docker run -d -p 8800:80 httpd  # -d detached -p port download apache image layers, create file systems and run in its own namespace
 curl localhost:8800
+docker image ls && docker container ls -a && docker network ls && docker volume ls
 ```
 
 ### Example 2
@@ -152,4 +153,13 @@ docker system prune
 docker volume prune
 docker system df
 docker network  prune
+```
+
+## Custom docker command
+
+- add the following to `~/.bashrc` or `~/.bash_profile`
+- then restart terminal or `source ~/.bashrc` or `source ~/.bash_profile`
+
+```bash
+alias dockerstuff='echo "DOCKER IMAGES" && echo "----------------------------------" && docker image ls && echo "DOCKER CONTAINERS" && echo "----------------------------------" && docker container ls -a && echo "DOCKER NETWORKS" && echo "----------------------------------" && docker network ls && echo "DOCKER VOLUMES" && echo "----------------------------------" && docker volume ls'
 ```
