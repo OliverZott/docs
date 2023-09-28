@@ -23,6 +23,7 @@ For scaling new PODs with same instance of application are created(**ReplicaSet*
 
 A Node is a machine that runs these Pods. It can be a physical machine or a virtual machine, and can be hosted on-premises or in the cloud. Each Node is managed by the control plane and contains the services necessary to run Pods. A Kubernetes cluster can have a large number of Nodes. There are two types of Nodes: The Kubernetes Master Node which runs the Kubernetes control plane controlling the entire cluster, and Worker Nodes which are nodes on which you can run containerized workloads1.
 
+- Single server in Kubernetes cluster
 - machine on which kubernetes is installed
 - can be a physical machine or a virtual machine
 - 2 types:
@@ -45,7 +46,8 @@ A Node is a machine that runs these Pods. It can be a physical machine or a virt
   - **etcd** - key-value store that stores all data used to manage the cluster. It is the single source of truth.
   - **kubelet** - agent that runs on each node in the cluster. It makes sure that containers are running in a pod.
   - **Container Runtime** - software that runs containers. Kubernetes supports several container runtimes: Docker, containerd, CRI-O, and any implementation of the Kubernetes CRI (Container Runtime Interface).
-  - **kubectl** - command line tool for interacting with the cluster
+  - **kubectl** - (cube control) command line tool for interacting with the cluster
+  - **Control Plane** - set of containers that manage the cluster
   - **Controller** - brain behind orchestration. It is always watching the state of the cluster through the API server and makes changes to the current state to match the desired state.
     - **kube-controller-manager** - runs controllers
     - **cloud-controller-manager** - runs controllers that interact with the underlying cloud providers

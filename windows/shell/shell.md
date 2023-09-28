@@ -19,3 +19,22 @@
 - `Set-Alias -Name ll -Value Get-ChildItem`
 - open profile: `notepad $profile`
 - add: e.g. `Set-Alias -Name kc -Value kubectl`
+
+```powershell
+function Get-Dockerstuff { 
+    Write-Output "DOCKER IMAGES"; 
+    Write-Output "--------------------------------------------------------------------"; 
+    docker image ls; 
+    Write-Output "`nDOCKER CONTAINERS"; 
+    Write-Output "--------------------------------------------------------------------"; 
+    docker container ls -a; 
+    Write-Output "`nDOCKER NETWORKS"; 
+    Write-Output "--------------------------------------------------------------------"; 
+    docker network ls; 
+    Write-Output "`nDOCKER VOLUMES"; 
+    Write-Output "--------------------------------------------------------------------"; 
+    docker volume ls
+}
+
+Set-Alias -Name dockerstuff -Value Get-Dockerstuff
+```
