@@ -33,6 +33,17 @@ kubectl get nodes
 ```
 
 ```bash
+# Clean up
+kubectl delete deployment php-apache && kubectl delete pod load-generator && kubectl delete hpa php-apache && kubectl delete service php-apache
+
+# better via labels - e.g. labels: app: my-app
+kubectl delete all -l app=my-app
+
+# or delete ENTIRE namespace
+kubectl delete namespaces my-namespace
+```
+
+```bash
 # pod commands
 kubectl run nginx --image=nginx --dry-run=client -o yaml > creation.yaml # dry-run to see what will be created
 kubectl run nginx --image=nginx  # pull image (dockerhub), create deployment, create pod

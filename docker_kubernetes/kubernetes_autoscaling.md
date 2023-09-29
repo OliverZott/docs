@@ -1,5 +1,13 @@
 # Kubernetes Autoscaling
 
+from: <https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/#autoscaling-on-multiple-metrics-and-custom-metrics>
+
+```md
+You can also specify resource metrics in terms of direct values, instead of as percentages of the requested value, by using a target.type of AverageValue instead of Utilization, and setting the corresponding target.averageValue field instead of the target.averageUtilization.
+
+There are two other types of metrics, both of which are considered custom metrics: pod metrics and object metrics. These metrics may have names which are cluster specific, and require a more advanced cluster monitoring setup.
+```
+
 ---------------------------------------------------------------------------------------------------
 Question: kubernetes: how does Horizontal Pod Autoscaling work? please explain basic idea (short) and give example walkthrough?
 
