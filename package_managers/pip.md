@@ -58,3 +58,7 @@ dash_bootstrap_components
 autopep8
 pandas
 ```
+
+## Linux - upgrade python
+
+<https://cloudbytes.dev/snippets/upgrade-python-to-latest-version-on-ubuntu-linux>

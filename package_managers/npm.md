@@ -4,7 +4,21 @@
 - **node** ...back-end JavaScript runtime environment (V8 JavaScript Engine)
 - **npm** ...package manager
 
-## nvm
+## NPM
+
+### Linux - n
+
+<https://www.npmjs.com/package/n>
+
+```bash
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
+sudo n latest
+n
+```
+
+### Windows - nvm
 
 - Windows
   - <https://community.chocolatey.org/packages/nvm>
@@ -22,10 +36,10 @@
 
 ## npm commands
 
+- `npm install -g npm@latest`
 - `npm init -y`
 - `npm list -g`
 - `npm update -g`
-- `npm install -g npm@latest`
 - `npm install -g typescript@latest`
 
 ### Update Dependecies
