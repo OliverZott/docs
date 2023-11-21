@@ -1,5 +1,9 @@
 # Bash Basics
 
+**Bash** (Bourne Again Shell) is the most common shell used in Unix systems. It supports command substitution, piping, variables, condition testing, and looping, among other features1. Bash sets the prompt from PS1 which contains backslash escapes4.
+
+**Zsh** (Z Shell) is highly interactive and customizable. It has floating-point support and hash data structures that Bash does not possess3. Zsh is more compatible with Bash and has additional features. If you’re familiar with Bash, you can switch to Zsh without learning a different syntax1. Zsh sets the prompt from percent escapes like %d4.
+
 ## ubuntu shell
 
 - `cd ~` ... user home
