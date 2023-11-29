@@ -50,6 +50,15 @@ n
 - `npm install <package>@latest`
 - Reactupdate: `npm install react react-dom @types/react @types/react-dom`
 
+## Useful packages
+
+- [npm-check](https://www.npmjs.com/package/npm-check)
+  - `npm install -g npm-check`
+  - `npm-check`
+- [depcheck](https://www.npmjs.com/package/depcheck)
+  - `npm install -g depcheck`
+  - `depcheck`
+
 ## nodejs project
 
 - `npm init -y`
