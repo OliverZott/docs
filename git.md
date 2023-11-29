@@ -4,6 +4,11 @@
 - `git log`
 - `git diff`
 - `git remote -v`
+- `git config --global user.email`
+  - `--local` by default if nothing
+- `git config --global user.name`
+- `git config --global user.name "John Doe"`
+- `git config --global --list`
 
 ## Git merge branches
 
