@@ -149,7 +149,7 @@ docker image tag <image id> <new image name>  # tag image
 # Clean Up
 docker image prune  # clean dangling images
 docker image prune -a  # clean all unused images
-docker system prune
+docker system prune  # clean all unused images, containers, networks, volumes
 docker volume prune
 docker system df
 docker network  prune
