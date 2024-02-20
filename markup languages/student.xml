@@ -1,0 +1,15 @@
+<?xml-stylesheet type="text/xsl" href="student.xsd"?>
+<students xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="student.xsd"> <!-- xsi:schemaLocation="http://www.example.com student.xsd" -->
+  <!--1 or more repetitions:-->
+  <student>
+    <firstname>Olli</firstname>
+    <lastname>Zott</lastname>
+    <age>40</age>
+    <courses>
+      <!--1 or more repetitions:-->
+      <course>math</course>
+      <course>physics</course>
+    </courses>
+  </student>
+</students>
