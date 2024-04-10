@@ -19,7 +19,7 @@ Profile and Themes in:
 - oh-my-posh [link](https://ohmyposh.dev/docs/installation/windows)
   - winget install JanDeDobbeleer.OhMyPosh -s winget  
 
-## Themes
+## Profiles and Themes
 
 - Create PWSH PROFILE
   - `notepad $PROFILE` bzw `echo $PROFILE`
