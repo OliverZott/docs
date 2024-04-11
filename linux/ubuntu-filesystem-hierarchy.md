@@ -9,3 +9,22 @@ tree -L2 ~  # list directories and files in tree format (up to 2nd level beginni
 
 <https://i.stack.imgur.com/BlpRb.png>
 <https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard>
+
+## Add executable to apps / dash
+
+```bash
+touch ~/.local/share/applications/myapp.desktop
+code ~/.local/share/applications/myapp.desktop
+```
+
+add text:
+
+```text
+[Desktop Entry]
+Name=My App
+Exec=/full/path/to/myapp
+Comment=Launch My App
+Terminal=false
+Type=Application
+Icon=application-x-executable
+```
