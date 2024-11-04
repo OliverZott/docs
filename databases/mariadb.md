@@ -3,6 +3,8 @@
 [B-Tree](https://en.wikipedia.org/wiki/B-tree)  
 [InnoDB](https://en.wikipedia.org/wiki/InnoDB)
 
+[Data Types](https://www.ionos.at/digitalguide/hosting/hosting-technik/mariadb-data-types/)
+
 ## Server Configurations
 
 in `C:\Program Files\MariaDB 11.5\data\my.ini`
@@ -16,6 +18,8 @@ character-set-server = utf8mb4
 ## Comamnds (Examples)
 
 - `mariadb -u root` ...login as root, no pw
+- `SELECT USER(), CURRENT_ROLE();` ...check current user
+- `SELECT User, Host FROM mysql.user;` ...view all users
 
 ### Databases
 
