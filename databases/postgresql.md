@@ -16,7 +16,7 @@
   - Open file `data\pg_hba.conf` in PostgreSql installation directory
   - Change `METHOD` to `trust` and restart service with `Restart-Service postgresql*`
   - Execute `"alter user postgres with password 'password';" | psql -Upostgres`
-  - Revert back `data\pg_hba.conf` to METHOD `md5` and restart service
+  - Revert back `data\pg_hba.conf` to METHOD `md5` or `scram-sha-256` and restart service
 
 ### Use CLI
 

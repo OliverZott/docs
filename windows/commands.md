@@ -15,3 +15,7 @@
 - `chkdsk /f` `chkdsk /r` disk check
 - `sfc` system file checker
 - `netsh`
+
+- `Get-Process -Id (Get-NetTCPConnection -LocalPort 5432).OwningProcess` check PORT
+- `Get-Service postgresql-x64-17`  ...get a specific service
+- `Restart-Service postgresql-x64-17`  ...restart a specific service
