@@ -32,4 +32,40 @@ It’s important to note that **await** does not create a new thread or block th
 
 In summary, **await** allows you to write asynchronous code that is more efficient and responsive, without blocking the calling thread or creating new threads. It’s a powerful tool for writing modern, scalable applications.
 
+### asny Task vs async avoid
+
+#### async Task
+
+- Usage: Preferred for most async methods, particularly those that are called directly and can be awaited.
+- Behavior:
+  - Awaitable: Methods that return Task can be awaited. This allows the caller to wait for the method to complete and handle the result or any exceptions.
+  - Exception Handling: Exceptions thrown in async Task methods can be caught and handled by the caller.
+  - Chainable: Task methods can be part of asynchronous workflows, where you can chain await calls.
+- Example: Ideal for most async methods where you want to perform asynchronous operations and handle the results or exceptions. Methods that perform I/O operations, network calls, or any async operations that need to be awaited.
+
+#### async void
+
+- Usage: Mostly used for event handlers.
+
+- Behavior:
+  - Non-Awaitable: Methods that return void cannot be awaited. This means that the caller cannot wait for the method to complete, and any exceptions thrown inside the method won't be caught by the caller.
+  - **Fire-and-Forget**: Since they don't return a Task, these methods are essentially "fire and forget", meaning the caller starts the method and doesn't wait for it to finish.
+  - Exception Handling: Exceptions thrown in async void methods must be handled within the method itself. If not, they result in application-level unhandled exceptions.
+- Example: Button click events, UI events. Commonly used in event handlers where the method signature must be void.
+
 ---
+
+## Middleware
+
+- IMiddleware Interface in Middleware ??
+- Register to middleware pipeline with app.UseMiddleware
+
+- [docs](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-9.0)
+- [youtube](https://www.youtube.com/watch?v=utt-5J9PN3Q&list=PLUOequmGnXxMlnHs9EQzOpLxVeEDw7uQn)
+
+## Logging
+
+### Serilog & OpenTelemetry &  Seq
+
+- [youtube](https://www.youtube.com/watch?v=MHJ0BHfWhRw)
+- maybe try **Grafana Loki** as aggregation system [loki](https://grafana.com/oss/loki/)
