@@ -88,6 +88,11 @@ docker exec -it <postgres-container> /bin/sh
 - Connect: `sudo -u postgres psql`
 - Install PgAdmin: <https://www.pgadmin.org/download/pgadmin-4-apt/>
 
+if problem with used port
+
+- `sudo lsof -i :5432`
+- `sudo kill <PID>`
+
 ## Queries
 
 ```SQL
