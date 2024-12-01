@@ -18,7 +18,7 @@
   - Open file `data\pg_hba.conf` in PostgreSql installation directory
   - Change `METHOD` to `trust` and restart service with `Restart-Service postgresql*`
   - Execute `"alter user postgres with password 'password';" | psql -Upostgres`
-  - Revert back `data\pg_hba.conf` to METHOD `md5` and restart service
+  - Revert back `data\pg_hba.conf` to METHOD `md5` or `scram-sha-256` and restart service
 
 ### Use CLI
 
@@ -89,6 +89,11 @@ docker exec -it <postgres-container> /bin/sh
 - Install: `sudo apt install postgresql`
 - Connect: `sudo -u postgres psql`
 - Install PgAdmin: <https://www.pgadmin.org/download/pgadmin-4-apt/>
+
+if problem with used port
+
+- `sudo lsof -i :5432`
+- `sudo kill <PID>`
 
 ## Queries
 
