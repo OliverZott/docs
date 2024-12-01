@@ -16,5 +16,5 @@
 `wsl --install -d <DistroName>`
 `wsl --unregister <DistroName>`
 `wsl -l -v`
-`wsl.exe --update`
+`wsl.exe --update` 
 ```

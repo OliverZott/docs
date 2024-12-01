@@ -1,5 +1,7 @@
 # PostgreSQL
 
+- port defined in `postgresql.conf` and `pg_hba.conf` (e.g.:"C:\Program Files\PostgreSQL\17\data\postgresql.conf")
+
 ## Windows
 
 ### Install

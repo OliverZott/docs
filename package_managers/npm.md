@@ -36,13 +36,14 @@ n
 
 ## npm commands
 
-- `npm install -g npm@latest`
-- `npm init -y`
-- `npm list -g`
+- `npm install -g npm@latest`  ...update npm
+- `npm outdated -g`
 - `npm update -g`
 - `npm install -g typescript@latest`
+- `npm list -g`
+- `npm init -y`
 
-### Update Dependecies
+### Update local Dependecies
 
 - `npm outdated`
 - `npm update`
