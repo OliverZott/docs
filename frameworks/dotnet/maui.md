@@ -29,11 +29,13 @@
 - Multi-Framework targetting:
   - `<TargetFrameworks>net9.0-ios17.0;net9.0-ios17.2</TargetFrameworks>`
 
-## .NET 9 MAUI
+## MAUI remarks
 
-- Workloads
-- Multi Framework targetting
-- Android Asset Packs
+### Lifecycle
+
+[builds](https://devblogs.microsoft.com/dotnet/a-deep-dive-into-how-net-builds-and-ships/?form=MG0AV3)
+[lifecycle](https://dev.to/kcrnac/net-execution-process-explained-c-1b7a?form=MG0AV3)
+[lifecycle](https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/app-lifecycle?view=net-maui-9.0)
 
 ## Basic structure
 

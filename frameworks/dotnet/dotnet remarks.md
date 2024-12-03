@@ -67,5 +67,6 @@ In summary, **await** allows you to write asynchronous code that is more efficie
 
 ### Serilog & OpenTelemetry &  Seq
 
+- Structured logging
 - [youtube](https://www.youtube.com/watch?v=MHJ0BHfWhRw)
 - maybe try **Grafana Loki** as aggregation system [loki](https://grafana.com/oss/loki/)

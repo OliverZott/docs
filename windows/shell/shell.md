@@ -1,6 +1,6 @@
 # Shell Basics
 
-PowerShell is different from both Bash and Zsh because it is designed to interact with .NET structures natively in Windows5. This means that it can pipe objects and data between scripts, applications, and sessions5. Each object in PowerShell has its own series of properties, which makes the data handling within PowerShell even more granular5.
+PowerShell is different from both Bash and Zsh because it is designed to interact with .NET structures natively in Windows. This means that it can pipe objects and data between scripts, applications, and sessions. Each object in PowerShell has its own series of properties, which makes the data handling within PowerShell even more granular.
 
 ## windows powershell
 
