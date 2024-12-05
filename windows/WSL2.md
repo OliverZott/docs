@@ -11,10 +11,10 @@
   - via Store or Terminal:
 
 ```bash
-`wsl -l -v`
-`wsl --list --online`
-`wsl --install -d <DistroName>`
-`wsl --unregister <DistroName>`
-`wsl -l -v`
-`wsl.exe --update` 
+wsl -l -v
+wsl --list --online
+wsl --install -d <DistroName>
+wsl --unregister <DistroName>
+wsl.exe --update
+wsl --setdefault ubuntu
 ```

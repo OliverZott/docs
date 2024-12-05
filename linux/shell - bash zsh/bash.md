@@ -9,6 +9,14 @@
 - `cd ~` ... user home
 - `cd /` ... root
 
+### check os
+
+```bash
+cat /etc/os-release
+lsb_release -a
+hostnamectl
+```
+
 ### set aliases
 
 - `code ~/.bashrc` ... edit bashrc (scriptfile, running on login, containing config for terminal session)
