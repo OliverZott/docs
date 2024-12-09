@@ -69,3 +69,13 @@ ddev wp core install --url='$DDEV_PRIMARY_URL' --title='New-WordPress' --admin_u
 # Launch WordPress admin dashboard in your browser
 ddev launch wp-admin/
 ```
+
+### Error with ddev wp core download
+
+<https://ddev.readthedocs.io/en/latest/users/install/docker-installation/#macos>
+<https://github.com/ddev/ddev/issues/4586>
+
+### Browser
+
+- <https://my-wp-site.ddev.site/>
+- <https://my-wp-side.ddev.site:33001/>
