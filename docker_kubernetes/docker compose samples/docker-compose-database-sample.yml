@@ -1,0 +1,53 @@
+# Database Sample
+#
+# Database - Volumes
+#   - Named Volume (`db_data`): Managed by Docker, no visible folder in your project directory.
+#   - Bind Mount (`./local_db_data`): Maps to a specific directory on local filesystem, visible in project directory (easier to access and manage the database files directly).
+#
+# Service - Volumes
+#   - Mounts a local directory/file (e.g. ./wp-content, ./wp-config.php) to container's respective directory/file
+#
+#
+
+
+
+services:
+  db:
+    image: mysql:latest
+    container_name: my_db_container
+    ports: 
+      - "3309:3306"
+    volumes:
+      - ./local_db_data:/var/lib/mysql
+      # - .db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    container_name: my_wordpress_container
+    ports:
+      - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+    # Mounts the local directory `./wp-content` and ./wp-config.phpto the container's respective directory
+    # This allows you to persist and manage WordPress content files locally.
+    volumes:
+      - ./wp-content:/var/www/html/wp-content
+      - ./wp-config.php:/var/www/html/wp-config.php
+
+volumes:
+  db_data:
+
+
+
