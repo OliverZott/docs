@@ -1,8 +1,10 @@
-# Task and Launch files
+# VS Code basics
 
 Minimalistic sample project showing Visual Studio Code configuration basics. Repsective JSON files are in .vscode folder.
 
 [Link](https://www.udemy.com/course/einfuhrung-in-visual-studio-code/learn/lecture/27149020#overview)
+
+## Workspace
 
 ## Launch
 
