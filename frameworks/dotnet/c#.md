@@ -1,6 +1,6 @@
 # C# basics
 
-## Memory allocartion
+## Memory allocation
 
 ### Value Types
 
@@ -29,3 +29,27 @@
   - Purpose: Used for dynamic memory allocation (e.g., objects created with new in C++ or malloc in C).
   - Management: Managed by the programmer, with memory allocated and deallocated using specific functions or operators.
   - Location in RAM: Typically starts at a fixed lower memory address and grows upwards towards higher memory addresses.
+
+## Language features
+
+keywords / types / features.
+
+- `ref struct` [ref structure types](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/ref-struct)
+- `span` [System.Span\<T\> struct](https://learn.microsoft.com/en-us/dotnet/fundamentals/runtime-libraries/system-span%7Bt%7D)
+- `lock` [lock statement](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/lock)
+
+## Version History
+
+[What's new](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-13)
+
+### .NET 9 / C# 13
+
+- [params-collections](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-13#params-collections)
+
+### .NET 8 / C# 12
+
+### .NET 7 / C# 11
+
+### .NET 6 / C# 10
+
+- [console app - top-level statements](https://learn.microsoft.com/en-gb/dotnet/core/tutorials/top-level-templates)
