@@ -1,4 +1,54 @@
-# Databases
+# Database Basics
+
+## Terminology
+
+- Tuples
+  - Definition: A tuple is essentially a row in a table. Each tuple represents a single record containing fields corresponding to the columns of the table.
+  - Importance: Understanding tuples helps you grasp how data is structured and manipulated within a table.
+
+- Transaction ID (XID)
+  - Definition: A unique identifier assigned to each transaction in the database.
+  - Importance: XIDs help track and manage transactions, ensuring data consistency and integrity. They are crucial for concurrency control and recovery.
+
+- Frozen Transaction ID (relfrozenxid)
+  - Definition: A special transaction ID assigned to tuples to indicate that they are immune to future transaction ID wraparound issues.
+  - Importance: Freezing transactions prevents them from becoming obsolete as the transaction counter advances. It ensures that older tuples remain accessible and valid.
+
+- Dead Tuples
+  - Definition: Rows that have been deleted or updated and are no longer needed, but have not yet been physically removed from the table.
+  - Importance: Dead tuples occupy space and can degrade performance. Removing them through vacuuming helps maintain efficient table size and performance.
+
+- Index Scan
+  - Definition: A process of scanning indexes to retrieve or modify data efficiently.
+  - Importance: Index scans help speed up data retrieval and modification by avoiding full table scans, making operations more efficient.
+
+- Page
+  - Definition: A fixed-size block of storage used by PostgreSQL to store table and index data.
+  - Importance: Pages are the basic units of storage and I/O. Managing pages efficiently helps optimize storage and access speed.
+
+- Write-Ahead Logging (WAL)
+  - Definition: A logging mechanism that ensures changes are recorded before they are applied, providing durability and crash recovery.
+  - Importance: WAL helps ensure data consistency and integrity by providing a way to recover from crashes and other failures.
+
+- Buffer
+  - Definition: Memory used to temporarily store data while it is being processed.
+  - Importance: Buffers help improve performance by reducing the need for disk I/O, allowing more efficient data access and manipulation.
+
+- Cache Hit/Miss
+  - Definition: A cache hit occurs when data is found in the buffer cache, while a cache miss occurs when data needs to be read from disk.
+  - Importance: High cache hit rates improve performance by reducing disk access times, while cache misses can slow down operations.
+
+- Vacuum
+  - Definition: A maintenance process that removes dead tuples, reclaims storage, and updates statistics.
+  - Importance: Regular vacuuming helps maintain database health, ensuring efficient space usage and accurate query planning.
+
+## EXPLAIN, ANALYZE, VACUUM
+
+- `EXPLAIN SELECT * FROM "Activities" WHERE "ActivityType" = 2;`
+- `ANALYZE VERBOSE "Locations";`
+- `VACUUM VERBOSE "Activities";`
+
+## Databases
 
 - Relational Databases
   - Description: Store data in tables with predefined schemas and relationships between them.

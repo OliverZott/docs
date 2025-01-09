@@ -97,6 +97,15 @@ if problem with used port
 
 ## Queries
 
+`EXPLAIN SELECT * FROM "Activities" WHERE "ActivityType" = 2;` explais what happens in this query
+
+- Seq Scan: Sequential scan, meaning the database reads the entire table.
+- Index Scan: If an index is used, it will show Index Scan.
+- Cost: Estimated start-up and total cost of the query.
+- Rows: Estimated number of rows the query will return.
+- Width: Average size of the rows in bytes.
+- Filter: Condition applied to the rows.
+
 ```SQL
 SELECT * FROM public."Jobs"
 WHERE "Identifikator" ILIKE '%olli%' 
