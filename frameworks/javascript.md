@@ -9,10 +9,11 @@
 
 ## async / await
 
-- `Single-Threaded` Nature: JavaScript runs on a single thread, meaning it executes one piece of code at a time. However, it can handle asynchronous operations without blocking the main thread.
-- `Event Loop`: The event loop is a mechanism that allows JavaScript to perform non-blocking operations by offloading tasks (like network requests) to the browser's or Node.js's APIs.
-- `Promises and Callbacks`: Asynchronous tasks often return promises. The event loop monitors these promises and places their callbacks in the task queue once they are resolved.
-- `Async/Await`: async/await provides a more synchronous syntax for handling promises, making code easier to read and write, but they still rely on promises under the hood.
+- `Event Loop`: JavaScript uses an event loop to handle asynchronous operations, which allows it to manage multiple tasks without blocking the main thread.
+- `Single-Threaded`: JavaScript runs on a single thread, but the event loop and asynchronous functions enable it to perform non-blocking I/O operations efficiently.
+- `Promise-Based`: JavaScript's async/await is built on top of promises. The await keyword pauses the async function until the promise resolves.
+- `Execution Context`: When an async function encounters await, it returns a promise and resumes the function once the promise resolves, keeping the main thread free.
+- `Concurrency`: JavaScript manages concurrency with the event loop and task queues, allowing it to handle asynchronous events without explicit multi-threading.
 
 ### Event loop workflow
 
