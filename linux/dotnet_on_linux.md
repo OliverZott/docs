@@ -15,3 +15,10 @@
     - `export DOTNET_ROOT=$HOME/.dotnet`
     - `export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools`
   - test: `dotnet --info`
+
+## Maui prerequisites
+
+- java: `sudo apt install openjdk-17-jdk`
+  - Choose java version: `sudo update-alternatives --config java`
+- worklods: `dotnet workloads install maui-android`
+- Andoid SDK: install via Rider
