@@ -11,10 +11,22 @@
   - via Store or Terminal:
 
 ```bash
+# Start linux shell
+wsl
+sudo apt update && sudo apt upgrade -y
+sudo apt autoclean && sudo apt autoremove -y
+
+# Show installed distros
 wsl -l -v
+
+# Show available distros
 wsl --list --online
 wsl --install -d <DistroName>
 wsl --unregister <DistroName>
-wsl.exe --update
+
+# Update WSL
+wsl.exe --update 
+
+# Set default distribution
 wsl --setdefault ubuntu
 ```
