@@ -1,5 +1,34 @@
 # MySql
 
+## CLI
+
+```bash
+winget show MariaDB.Server
+winget show MySQL.Server
+
+mysql -u [username] -p  # Login
+mysql -u [username] -p --port=[port_number]  # login with specific port
+
+mysql -u root -p  --port=3307  # connect to mariadb (installed on port 3307)
+mysql -u root -p  --port=3306  # connect to mysql (installed on port 3306)
+SHOW DATABASES;  # Show all databases:
+
+# Show all tables in a specific database:
+USE [database_name];  
+SHOW TABLES;
+
+# Show general information about the database:
+SELECT VERSION();
+SELECT DATABASE();
+STATUS;
+
+# Show users and their roles:
+SELECT User, Host FROM mysql.user;
+SHOW GRANTS FOR 'username'@'host';
+
+quit
+```
+
 ## Example queries
 
 ```sql
