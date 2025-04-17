@@ -21,9 +21,9 @@ n
 ### Windows - nvm
 
 - Windows
+  - <https://github.com/coreybutler/nvm-windows>
   - <https://community.chocolatey.org/packages/nvm>
   - `choco install nvm`
-  - <https://github.com/coreybutler/nvm-windows>
 
 - Linux
   - <https://github.com/nvm-sh/nvm>
