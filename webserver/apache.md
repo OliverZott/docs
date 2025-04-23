@@ -10,7 +10,7 @@
 - Tomcat/Lucee server
   - `C:\lucee\tomcat\conf\server.xml`
 
-- apache commands
+- Apache commands
   - `.\httpd.exe -k status`
   - `.\httpd.exe -k runservice`  ...runs apache as a service which ensures Apache to start with your operating system and runs continuously.
   - `.\httpd.exe -k restart`
