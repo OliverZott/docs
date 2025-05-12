@@ -22,6 +22,9 @@
 - Can be initialized in **two places**:
    1. At declaration: `public readonly int Value = 10;`
    2. Inside the constructor: `Value = 20;`.
+- Lifecycle:
+   1. persists for **Instance lifecycle**
+   2. If `static readonly` it persists for **application lifecycle**
 - Unlike `const`, it supports **non-primitive types** such as objects or arrays.
 - Its value can differ between instances of the class since it is assigned during object construction.
 - Usage: When you need **per-instance immutability**, such as configuration values determined at runtime (e.g., based on constructor parameters or configuration files - `readonly string ConfigPath`) or dependency-injected fields.  When immutability is needed for instance-level or runtime scenarios.
