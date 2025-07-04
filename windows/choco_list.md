@@ -65,8 +65,8 @@ choco install git vscode jetbrainstoolbox openjdk miniconda3 nvm dotnet visualst
 ```
 
 ```bash
+choco outdated
 choco upgrade chocolatey
-cup all -y
-choco list -lo
-choco list -li
+choco upgrade all
+choco list
 ```
