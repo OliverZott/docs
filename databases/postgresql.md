@@ -10,6 +10,18 @@
 - `choco install postgresql --params '/Password:test /Port:5433' --ia '--enable-components server,commandlinetools'`
 - `choco install pgadmin4`
 
+### Check Port
+
+Windows:
+
+- `Get-Process -Id (Get-NetTCPConnection -LocalPort 5432).OwningProcess` ...check process to port
+- `netstat -aon | findstr 5432` ...check ports
+- `tasklist /fi "PID eq 7156"` ...check process to PID
+- `tasklist | findstr postgres` ...check process by name
+
+Linux:
+
+
 ### Setup User
 
 [Chocolatey Software | PostgreSQL 14.4.1](https://community.chocolatey.org/packages/postgresql "‌")
