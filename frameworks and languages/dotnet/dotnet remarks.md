@@ -1,26 +1,53 @@
 # .NET Knowledgebase
 
+## Structure
+
+### .csproj
+
+This is the project-level configuration file. It tells the compiler everything it needs to know about a single project:
+
+- What files to compile
+- Which NuGet packages and libraries to reference
+- Target framework (like net9.0)
+- Build settings, output paths, and more
+
+### .sln
+
+This is the container for multiple projects. It keeps track of:
+
+- Which .csproj files are part of the solution
+- How they’re organized (e.g. folders, dependencies)
+- Build configurations (Debug/Release)
+- IDE-specific settings (like in Visual Studio or Rider)
+
 ## Assemblies, artifacts, and packages
 
 In .NET and Azure Pipelines, **assemblies** are the output of the build process that contains compiled code and other resources that are required by the application at runtime. They are typically DLLs or EXEs. On the other hand, **artifacts** are files that are produced by a build and are used for deployment purposes. Artifacts can include assemblies, but they can also include other files such as configuration files, scripts, and documentation².
 
-The outcome of a pipeline build is called a **build artifact**. It is a collection of files that were produced by the build process and can be used for deployment purposes².
+The outcome of a pipeline build is called a **build artifact**. It is a collection of files that were produced by the build process and can be used for deployment purposes.
+In .NET and Azure Pipelines, **NuGet packages** are considered **artifacts**. You can use Azure Pipelines to publish your NuGet packages within your pipeline, to your Azure Artifacts feed, or to public registries such as nuget.org.
 
-Source: Conversation with Bing, 03/08/2023
-(1) Artifacts in Azure Pipelines - Azure Pipelines | Microsoft Learn. <https://learn.microsoft.com/en-us/azure/devops/pipelines/artifacts/artifacts-overview?view=azure-devops>.
-(2) Build, test, and deploy .NET Core apps - Azure Pipelines. <https://learn.microsoft.com/en-us/azure/devops/pipelines/ecosystems/dotnet-core?view=azure-devops>.
-(3) Azure Artifacts vs Build Artifacts vs Pipeline Artifacts: Difference .... <https://dev.to/n3wt0n/azure-artifacts-vs-build-artifacts-vs-pipeline-artifacts-difference-explained-1k24>.
+## Compilation
 
----
+### JIT (Just-in-Time)
 
-In .NET and Azure Pipelines, **NuGet packages** are considered **artifacts**. You can use Azure Pipelines to publish your NuGet packages within your pipeline, to your Azure Artifacts feed, or to public registries such as nuget.org¹.
+1. C# Code
+1. **Roslyn** compiles to **IL** (Intermediate Language) stored in **assemblies** like *.dll* or *.exe* including *metdata*
+1. **CLR** (Common Languag Runtime) loads assemlby
+1. **JIT** translates IL into native machine code at **run-time** (compiled native code is cached in memory)
 
-I hope this helps! Let me know if you have any more questions.
+### AOT (Ahead-of-Time)
 
-Source: Conversation with Bing, 03/08/2023
-(1) Publish NuGet packages with Azure Pipelines (YAML/Classic). <https://learn.microsoft.com/en-us/azure/devops/pipelines/artifacts/nuget?view=azure-devops>.
-(2) Get started with NuGet packages in Azure Artifacts. <https://learn.microsoft.com/en-us/azure/devops/artifacts/get-started-nuget?view=azure-devops>.
-(3) NuGetCommand@2 - NuGet v2 task | Microsoft Learn. <https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/reference/nuget-command-v2?view=azure-pipelines>.
+1. C# Code
+1. **Roslyn** compiles to **IL**, stored in **assemblies** like *.dll* or *.exe*, including metadata.
+1. **AOT** compiler translates **IL** into native machine code at **build-time**.
+1. Output is a **self-contained fully native executable**, --> no **IL** left, so no CLR is needed
+
+### Differences
+
+**JIT** compilation is part of the **CLR**. The CLR manages runtime execution, including memory management, type checking, and security, and it invokes the JIT compiler when needed to convert IL into native code dynamically.
+
+**AOT**  happens before execution and does not depend on the **CLR** at runtime. Instead, AOT produces a fully native executable outside of the usual CLR runtime flow.
 
 ## Async
 
@@ -51,6 +78,7 @@ Thread Pool:
 - If the exhaustion is severe, it can cause timeouts and failures in task execution.
 
 Summary:
+
 - JavaScript: Utilizes a single-threaded event loop for non-blocking I/O and promise-based async/await.
 - C#: Leverages compiler-generated state machines and can involve multi-threading for efficient task management and concurrency.
 
@@ -66,8 +94,7 @@ Summary:
   - When Used: The thread pool is used when you perform operations that need to run on separate threads, particularly CPU-bound tasks using methods like `Task.Run`.
   - Function: It handles background tasks and operations that would otherwise block the main thread.
 
-
-### Example 
+### Example
 
 I/O-Bound Operations (State Machine):  
 These operations often involve awaiting tasks that don’t require additional threads because they’re waiting on I/O operations like network requests.
@@ -99,7 +126,6 @@ private int HeavyComputation(int input)
     return input * input;
 }
 ```
-
 
 ### asny Task vs async void
 
