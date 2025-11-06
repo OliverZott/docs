@@ -21,7 +21,6 @@ Windows:
 
 Linux:
 
-
 ### Setup User
 
 [Chocolatey Software | PostgreSQL 14.4.1](https://community.chocolatey.org/packages/postgresql "‌")
@@ -128,4 +127,10 @@ ORDER BY "Id" ASC
 ```SQL
 DELETE FROM public."Jobs"
 WHERE "Identifikator" ILIKE '%olli%' 
+```
+
+```SQL
+DELETE FROM quantity WHERE EXTRACT(YEAR FROM date) = 2021;
+SELECT * FROM quantity WHERE EXTRACT(YEAR FROM date) = 2021;
+SELECT municipality_code FROM quantity WHERE EXTRACT(YEAR FROM date) = 2021;
 ```
