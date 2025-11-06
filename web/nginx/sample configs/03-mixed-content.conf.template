@@ -1,0 +1,105 @@
+# =============================================================================
+# MIXED CONTENT NGINX TEMPLATE (Static Files + API Proxy)
+# =============================================================================
+# Use Case: Frontend app with backend API, or website with dynamic sections
+# What to change:
+# 1. Replace "yoursite.com" with your actual domain
+# 2. Change "/var/www/yoursite" to your static files location
+# 3. Change "localhost:3000" to where your API runs
+# 4. Update SSL certificate paths if using HTTPS
+# =============================================================================
+
+# HTTP server
+server {
+    listen 80;
+    server_name yoursite.com www.yoursite.com;
+    
+    # If you want HTTPS, uncomment this line:
+    # return 301 https://$server_name$request_uri;
+    
+    # Static files location
+    root /var/www/yoursite;
+    index index.html index.htm;
+    
+    # Serve static files and frontend
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+    
+    # Proxy API requests to backend
+    location /api/ {
+        proxy_pass http://localhost:3000/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        
+        # CORS headers (adjust as needed)
+        add_header Access-Control-Allow-Origin *;
+        add_header Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS";
+        add_header Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With";
+        
+        # Handle preflight requests
+        if ($request_method = 'OPTIONS') {
+            return 204;
+        }
+    }
+    
+    # Serve uploads/media files directly
+    location /uploads/ {
+        alias /var/www/uploads/;
+        expires 1y;
+        add_header Cache-Control "public";
+    }
+    
+    # Cache static assets
+    location ~* \.(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+    
+    # Security headers
+    add_header X-Frame-Options SAMEORIGIN;
+    add_header X-Content-Type-Options nosniff;
+    add_header X-XSS-Protection "1; mode=block";
+}
+
+# HTTPS server (uncomment if you want SSL)
+# server {
+#     listen 443 ssl;
+#     server_name yoursite.com www.yoursite.com;
+#     
+#     # SSL certificates
+#     ssl_certificate /path/to/your/cert.pem;
+#     ssl_certificate_key /path/to/your/private.key;
+#     
+#     # Modern SSL settings
+#     ssl_protocols TLSv1.2 TLSv1.3;
+#     ssl_ciphers HIGH:!aNULL:!MD5;
+#     
+#     root /var/www/yoursite;
+#     index index.html index.htm;
+#     
+#     location / {
+#         try_files $uri $uri/ /index.html;
+#     }
+#     
+#     location /api/ {
+#         proxy_pass http://localhost:3000/;
+#         proxy_set_header Host $host;
+#         proxy_set_header X-Real-IP $remote_addr;
+#         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#         proxy_set_header X-Forwarded-Proto https;
+#     }
+#     
+#     location /uploads/ {
+#         alias /var/www/uploads/;
+#         expires 1y;
+#         add_header Cache-Control "public";
+#     }
+#     
+#     location ~* \.(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot)$ {
+#         expires 1y;
+#         add_header Cache-Control "public, immutable";
+#     }
+# }
