@@ -1,22 +1,54 @@
 # Apache Web Server Basics
 
-## What is Apache?
-
-... popular web server software. It serves web content (HTML, images, etc.) to users' browsers and can handle multiple websites on a single server.
+Apache HTTP Server is a popular open-source web server software. It serves web content (HTML, images, etc.) to browsers and can handle multiple websites on a single server.
 
 ## Key Components
 
-### 1. Main Configuration Files
+### Configuration Files and Directory Structure
 
-- `httpd.conf`: Core configuration file
-- `httpd-vhosts.conf`: Virtual host configurations
+#### Linux Directory Structure
+
+- `/etc/apache2/`: Main configuration directory (Debian/Ubuntu)
+- `/etc/httpd/`: Main configuration directory (RHEL/CentOS)
+
+**Core Configuration Files:**
+
+- `apache2.conf` or `httpd.conf`: Main configuration file
+- `ports.conf`: Port configuration
+- `envvars`: Environment variables
+- `magic`: MIME type detection
+
+**Directory Structure:**
+
+- `sites-available/`: Virtual host configuration files
+- `sites-enabled/`: Symlinks to enabled sites
+- `mods-available/`: Available module configurations
+- `mods-enabled/`: Symlinks to enabled modules
+- `conf-available/`: Additional configuration files
+- `conf-enabled/`: Symlinks to enabled configurations
+
+**Important Directories:**
+
+- `/var/www/`: Default document root directory
+- `/var/log/apache2/`: Log files directory
+
+#### Windows Directory Structure
+
+- `C:\Apache24\` or `C:\Program Files\Apache Software Foundation\Apache2.4\`: Main installation directory
+
+**Core Configuration Files:**
+
+- `conf\httpd.conf`: Main configuration file
+- `conf\extra\httpd-vhosts.conf`: Virtual host configurations
+- `conf\extra\httpd-ssl.conf`: SSL configuration
+- `conf\mime.types`: MIME type definitions
 - `.htaccess`: Per-directory configuration (if enabled)
 
-### 2. Important Directories
+**Important Directories:**
 
-- Document Root: Where website files are stored
-- Log files: Access and error logs
-- Modules: Additional functionality
+- `htdocs\`: Document root
+- `logs\`: Log files
+- `modules\`: Apache modules
 
 ## Common Configuration Elements
 
@@ -64,21 +96,21 @@ apachectl -t
 
 ## Common Tasks
 
-### 1. Enable/Disable Sites
+### Enable/Disable Sites
 
 ```bash
 a2ensite example.com    # Enable site
 a2dissite example.com   # Disable site
 ```
 
-### 2. Enable/Disable Modules
+### Enable/Disable Modules
 
 ```bash
 a2enmod rewrite        # Enable module
 a2dismod rewrite      # Disable module
 ```
 
-### 3. Check Status
+### Check Status
 
 ```bash
 apachectl -S          # Show virtual hosts
@@ -93,55 +125,56 @@ apachectl -M          # Show loaded modules
 - Hide server information
 - Use strong authentication
 
-## Resources
-
-- [Apache Documentation](https://httpd.apache.org/docs/)
-- [Apache Configuration Guide](https://httpd.apache.org/docs/2.4/configuring.html)
-
 ## Technical Deep Dive
 
 ### Request Flow
 
 1. **DNS (Domain Name System) Resolution**
-   - DNS servers can be deployed in different ways:
-     - **Separate Hardware**: Dedicated physical server running DNS software
-     - **Same Hardware**: Can run on same machine as Apache (not recommended for production)
-     - **Cloud Service**: Managed DNS (e.g., AWS Route 53, Cloudflare)
-     - **Container**: Running in Docker/Kubernetes
-   - Common DNS server software:
-     - BIND (Berkeley Internet Name Domain)
-     - PowerDNS
-     - Unbound
-   - DNS resolution process:
 
-     ```txt
-     Client → Local DNS Cache → ISP (Internet Service Provider) DNS → Root DNS → TLD (Top Level Domain) DNS → Authoritative DNS
-     ```
+   DNS servers can be deployed in different ways:
 
-   - Authoritative DNS servers:
-     - Store actual domain records
-     - Can be managed by:
-       - Domain registrar
-       - Cloud providers (Route 53, Cloudflare)
-       - Self-hosted DNS servers
-   - Common DNS record types:
-     - A: IPv4 (Internet Protocol version 4) address
-     - AAAA: IPv6 (Internet Protocol version 6) address
-     - CNAME (Canonical Name): Domain alias
-     - MX (Mail Exchange): Mail server
-     - TXT: Text records
+   - **Separate Hardware**: Dedicated physical server running DNS software
+   - **Same Hardware**: Can run on same machine as Apache (not recommended for production)
+   - **Cloud Service**: Managed DNS (e.g., AWS Route 53, Cloudflare)
+   - **Container**: Running in Docker/Kubernetes
 
-   - **What DNS Does:**
+   Common DNS server software:
 
-        ```txt
-        Input:  example.com
-        ↓
-        DNS Server looks up records
-        ↓
-        Output: 93.184.216.34 (IPv4 address)
-        ```
+   - BIND (Berkeley Internet Name Domain)
+   - PowerDNS
+   - Unbound
 
-   - translates human-readable domain names into IP addresses and also handles reverse lookups (IP → domain) and other record types
+   DNS resolution process:
+
+   ```txt
+   Client → Local DNS Cache → ISP DNS → Root DNS → TLD DNS → Authoritative DNS
+   ```
+
+   Authoritative DNS servers store actual domain records and can be managed by:
+
+   - Domain registrar
+   - Cloud providers (Route 53, Cloudflare)
+   - Self-hosted DNS servers
+
+   Common DNS record types:
+
+   - A: IPv4 address
+   - AAAA: IPv6 address
+   - CNAME: Domain alias
+   - MX: Mail server
+   - TXT: Text records
+
+   **What DNS Does:**
+
+   ```txt
+   Input:  example.com
+   ↓
+   DNS Server looks up records
+   ↓
+   Output: 93.184.216.34 (IPv4 address)
+   ```
+
+   DNS translates human-readable domain names into IP addresses and also handles reverse lookups (IP → domain) and other record types.
 
 2. **Apache Processing**
 
@@ -196,7 +229,7 @@ apachectl -M          # Show loaded modules
 
 ### Common Configuration Patterns
 
-#### 1. Reverse Proxy
+#### Reverse Proxy
 
 ```apache
 <VirtualHost *:80>
@@ -206,14 +239,14 @@ apachectl -M          # Show loaded modules
 </VirtualHost>
 ```
 
-#### 2. URL Rewriting
+#### URL Rewriting
 
 ```apache
 RewriteEngine On
 RewriteRule ^blog/([0-9]+)$ /blog.php?id=$1 [L]
 ```
 
-#### 3. SSL Configuration
+#### SSL Configuration
 
 ```apache
 <VirtualHost *:443>
@@ -238,3 +271,8 @@ RewriteRule ^blog/([0-9]+)$ /blog.php?id=$1 [L]
 - `apachectl -t`: Configuration test
 - Error logs: `/var/log/apache2/error.log`
 - Access logs: `/var/log/apache2/access.log`
+
+## Resources
+
+- [Apache Documentation](https://httpd.apache.org/docs/)
+- [Apache Configuration Guide](https://httpd.apache.org/docs/2.4/configuring.html)
