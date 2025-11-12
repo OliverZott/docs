@@ -71,9 +71,9 @@ docker image tag <image id> <new image name>  # tag image
 
 ```bash
 # Clean Up
-docker image prune  # clean dangling images
-docker image prune -a  # clean all unused images
-docker system prune  # clean all unused images, containers, networks, volumes
+docker system prune  # clean dangling images, containers, networks, volumes
+docker system prune -a # clean ALL unused images, containers, networks, volumes
+docker image prune -a # clean dangling images AND unused images (-a = all)
 docker volume prune
 docker system df
 docker network  prune
