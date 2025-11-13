@@ -60,3 +60,72 @@ Workflow of how runners work:
   - provides the `Docker Daemon` (dockerd)
   - Job-Container communicates via DOCKER_HOST=tcp://docker:2375 with that Daemon
   - So the Job can execute docker build, docker push, etc.
+
+- mounting the **hosts Docker Socket**
+  - `/var/run/docker.sock`
+
+## Usefull commands on Gitlab Runner's host machine
+
+Config file location:
+`/etc/gitlab-runner/config.toml`
+
+- `sudo systemctl status gitlab-runner` ...check gitlab runner status
+- `sudo systemctl status docker` ...check docker status
+- `sudo journalctl -u gitlab-runner --since "30 minutes ago"` ...check gitlab-runner logs
+- `sudo systemctl restart gitlab-runner` ...restart gitlab-runner service
+- `ls -l /var/run/docker.sock` ...check docker socket permissions
+
+## Example config
+
+```yaml
+[[runners]]
+  name = "my-runner"
+  url = "https://gitlab.velosaurus.org"
+  id = 3
+  token = "xxxxxxxxxxxxxxxxxxxx"
+  executor = "docker"
+  [runners.cache]
+    MaxUploadedArchiveSize = 0
+    [runners.cache.s3]
+    [runners.cache.gcs]
+    [runners.cache.azure]
+  [runners.docker]
+    tls_verify = false
+    image = "alpine:latest"
+    privileged = true
+    volumes = ["/var/run/docker.sock:/var/run/docker.sock", "/cache"]
+    disable_entrypoint_overwrite = false
+    oom_kill_disable = false
+    disable_cache = false
+    shm_size = 0
+    network_mtu = 0
+```
+
+## Example pipeline
+
+```yml
+stages:
+  - deployment
+
+variables:
+  IMAGE_NAME: "$DOCKERHUB_USERNAME/$CI_PROJECT_NAME"
+  DOCKER_BUILDKIT: "1"
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
+
+build_and_push:
+  stage: deployment
+  image: docker:latest
+  variables:
+    DOCKER_HOST: unix:///var/run/docker.sock
+  before_script:
+    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+    - echo "VITE_API_ROOT=$VITE_API_ROOT" > .env
+    - echo "VITE_API_ROOT is $VITE_API_ROOT"
+  script:
+    - docker build -t "$IMAGE_NAME:latest" -t "$IMAGE_NAME:$CI_COMMIT_SHORT_SHA" .
+    - docker push "$IMAGE_NAME:latest"
+    - docker push "$IMAGE_NAME:$CI_COMMIT_SHORT_SHA"
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
+```
