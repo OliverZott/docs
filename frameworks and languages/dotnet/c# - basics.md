@@ -1,8 +1,59 @@
 # C# - Language Basics
 
+- [Types](#types)
 - [const vs readonly](#const-vs-readonly)
 - [Collection Types](#collection-types)
 - [keywords / types / features](#keywords--types--features)
+
+## Types
+
+2 Categories of types in C#:
+
+- [Value types](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/value-types#built-in-value-types)
+- [Reference types](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/reference-types)
+
+**Value types** (aka primitives/structs)
+
+- `int`, `double`, `bool`, `char`, `decimal`, `structs`, `enums`, and `Nullable<T>`.
+- They live on the stack when used directly, copy their entire value when assigned/passed, and default-initialize to zeros/false. They can’t be null unless wrapped in `Nullable<T>` (e.g., `int?`).
+
+**Reference types**
+
+- `string`, `arrays`, `collections`, `classes`, `interfaces`, `delegates`, `records`, `object`, and `dynamic`.
+- They store references to objects on the managed heap, so assignments/passing copy the reference, not the object.
+- Multiple variables can point at the same instance, and they can be null.
+
+### ValueType vs ReferenceType
+
+- Value type assignment creates independent copies; reference type assignment shares the same object.
+- Value types have deterministic memory layout and don’t require garbage collection; reference types rely on GC.
+- Value types can be boxed/unboxed when treated as object; reference types already are objects.
+
+### Arrays / Collections / respective Interfaces
+
+**Array**
+
+- fixed-size, contiguous block of elements (int[]), strongly typed, and provide fast indexed access.
+- Arrays implement IList, IEnumerable, etc., but you rarely resize them; you’d have to allocate a new array.
+
+**Collection**
+
+- broader term for the types in System.Collections / System.Collections.Generic that manage groups of items with extra behaviors (dynamic sizing, hashing, ordering, queues, etc.).
+- They typically wrap arrays internally but expose richer APIs.
+
+- `List<T>`: resizable array-backed list.
+- `LinkedList<T>`: doubly linked list. advantages for frequent insertions/deletions. disa
+- `Queue<T>` / `Stack<T>`: FIFO / LIFO.
+- `HashSet<T>` / `SortedSet<T>`: unique-element sets (hash-based vs ordered).
+- `Dictionary<TKey,TValue>` / `SortedDictionary<TKey,TValue>` / `SortedList<TKey,TValue>`: key–value maps with different ordering/performance tradeoffs.
+
+**Interfaces**
+
+Interfaces like `IEnumerable<T>`, `ICollection<T>`, `IList<T>`, etc. describe capabilities rather than concrete storage.
+
+- `IEnumerable<T>` means “I only need to iterate,”
+- `ICollection<T>` adds count/add/remove,
+- `IList<T>`  adds indexing.
 
 ## const vs readonly
 
