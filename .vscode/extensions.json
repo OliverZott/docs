@@ -1,0 +1,9 @@
+// In VS Code extensions view use `@recommended` to install extensions defined in .extensions.json
+{
+    "recommendations": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "DavidAnson.vscode-markdownlint",
+        "GitHub.vscode-github-actions",
+    ]
+}
