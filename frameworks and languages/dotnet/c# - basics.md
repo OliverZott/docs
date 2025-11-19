@@ -90,6 +90,9 @@ Interfaces like `IEnumerable<T>`, `ICollection<T>`, `IList<T>`, etc. describe ca
 
 ## Collection Types
 
+- [Comparison of collection types](https://learn.microsoft.com/en-us/dotnet/standard/collections/#choose-a-collection)
+- [System collection generics](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic?view=net-10.0)
+
 | **Type**       | **Allocations**   | **Resizing**   | **Async Support** | **Use Cases**                               |
 |-----------------|-------------------|----------------|-------------------|---------------------------------------------|
 | `Span<T>`       | Stack-only        | No             | No                | High-performance slicing, buffers.          |
@@ -103,6 +106,11 @@ Interfaces like `IEnumerable<T>`, `ICollection<T>`, `IList<T>`, etc. describe ca
 - **`Memory<T>`**: Ideal for async and long-lived operations but slower than `Span<T>`.
 
 Choose the right type based on your application's **performance**, **size**, and **lifetime requirements**.
+
+### HashSet vs List
+
+- https://stackoverflow.com/questions/150750/hashset-vs-list-performance
+- [docs hashset](https://learn.microsoft.com/en-us/dotnet/fundamentals/runtime-libraries/system-collections-generic-hashset%7Bt%7D)
 
 ## keywords / types / features
 
