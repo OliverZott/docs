@@ -1,5 +1,21 @@
 # Maui Shell
 
+## Hierarchy
+
+In MAUI Shell there are three main levels:
+
+- ShellItem – top-level containers
+  - Types: FlyoutItem, TabBar, or a lone ShellContent directly under Shell.
+  - e.g. In AppShell, a <TabBar>, if the only ShellItem, it’s the single top-level item.
+- ShellSection – sections inside a ShellItem
+  - Normally created implicitly from ShellContent or explicitly via <Tab> / <ShellSection>.
+  - Each of your ShellContent entries inside the TabBar becomes a ShellSection; these are what you see as bottom navbar tabs: Home, Calendar, Medication, Education.
+- Pages (Navigation stack) – actual ContentPages in each section’s navigation stack.
+  - So in example app:
+    - Top-level ShellItem: the single <TabBar> (this is what ShellItemChanged would fire for if you ever had more than one).
+    - Per-tab level (ShellSection): each ShellContent under the TabBar; these are the navbar items, and switching between them raises ShellSectionChanged.
+    - Flyout MenuItem (“Help”) is not a ShellItem; it’s just a clickable menu entry that runs a command and pushes a page onto whatever section/tab is currently active.
+
 ## Example
 
 Explain the relationship between `AppShell` and `MainPage`:
