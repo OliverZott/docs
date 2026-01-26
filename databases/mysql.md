@@ -16,6 +16,8 @@ SHOW DATABASES;  # Show all databases:
 # Show all tables in a specific database:
 USE [database_name];  
 SHOW TABLES;
+DESCRIBE mytable;
+
 
 # Show general information about the database:
 SELECT VERSION();
