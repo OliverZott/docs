@@ -19,8 +19,6 @@ Windows:
 - `tasklist /fi "PID eq 7156"` ...check process to PID
 - `tasklist | findstr postgres` ...check process by name
 
-Linux:
-
 ### Setup User
 
 [Chocolatey Software | PostgreSQL 14.4.1](https://community.chocolatey.org/packages/postgresql "‌")
@@ -37,17 +35,8 @@ Linux:
 psql -V
 psql -U postgres
 psql -h <IP_Address> -p <port_no> -d <database_name> -U <DB_username> -W
-```
 
-or Linux:
-
-```shell
-sudo -u postgres psql
-```
-
-to quit:
-
-```shell
+# to quit 
 postgres=# \q
 ```
 
@@ -58,11 +47,6 @@ postgres=# \l
 postgres=# \c <dbName>
 postgres=# \c postgres
 postgres=# \dt
-```
-
-Show full history, show useres, run script
-
-```shell
 postgres=# \d
 postgres=# \du
 postgres=# \i myInsertFile.sql
@@ -105,6 +89,12 @@ if problem with used port
 
 - `sudo lsof -i :5432`
 - `sudo kill <PID>`
+
+### Linux shell commands
+
+```shell
+sudo -u postgres psql
+```
 
 ## Queries
 
