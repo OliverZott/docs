@@ -1,9 +1,9 @@
 # MAUI
 
-## .net8 -> .net9
+## Emulator settings
 
-1. install [.NET Upgrade Assistant](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.upgradeassistant)
-1. install workloads: `dotnet workload install maui-ios maui-android maui-maccatalyst`
+- `adb -s emulator-5554 shell settings put global anr_show_background 0`
+- `adb -s emulator-5554 shell setprop debug.anr.timeout_multiplier 100`
 
 ## Versions
 
