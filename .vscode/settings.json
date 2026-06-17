@@ -1,6 +1,6 @@
 // Used to store VS Code settings (normally in appdata)
 {
-    "workbench.colorTheme": "Default Dark Modern",
+    "workbench.colorTheme": "Dark Modern",
     "workbench.startupEditor": "none",
     "python.defaultInterpreterPath": "C:\\Users\\o.zott\\AppData\\Local\\Microsoft\\WindowsApps\\python3.10.exe",
     "security.workspace.trust.untrustedFiles": "open",
