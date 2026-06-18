@@ -17,17 +17,21 @@
 - no domain logic
 - only transport + JSON
 
+ApiClient is intentionally “dumb.” It’s a raw pipe to the backend.
+
 ### Feature services / Service Layer (e.g. WeightDataService)
 
 - catch exceptions (ApiExceptions, Network exceptions... )
 - log domain-specific messages
 - return fallback values (empty list, null, false)
-- service layer returns a result object, not an exception
 
-## ViewModel
+### ViewModel
 
-- NO exception handling NO try/catch
-- NO logging of infrastructure errors
+- Receives result objects
+- Updates UI
+- No try/catch/excption handling
+- No logging of infrastructure errors
+- No infrastructure knowledge
 - ONLY handles result objects
 
 ### Global exception handlers
