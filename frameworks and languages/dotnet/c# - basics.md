@@ -55,6 +55,30 @@ Interfaces like `IEnumerable<T>`, `ICollection<T>`, `IList<T>`, etc. describe ca
 - `ICollection<T>` adds count/add/remove,
 - `IList<T>`  adds indexing.
 
+## Nullable vs Non‑Nullable Assignment  
+
+This table shows exactly how C# behaves when assigning a nullable `int?` to a non‑nullable `int`, and how `!` and `.Value` change compiler and runtime behavior.
+
+---
+
+## Comparison Table
+
+| Expression            | Compiles? | Compiler Warning?        | Resulting Type | Runtime Behavior if `x` is null |
+|-----------------------|-----------|---------------------------|----------------|----------------------------------|
+| `int y = x`           | ❌        | n/a                       | n/a            | n/a (does not compile)           |
+| `int y = x!`          | ❌        | n/a                       | n/a            | n/a (does not compile)           |
+| `int y = x.Value`     | ✔         | ⚠️ *Possible null value*  | `int`          | ❌ **Throws** (`InvalidOperationException`) |
+| `int y = x!.Value`    | ✔         | ✔ *No warning*            | `int`          | ❌ **Throws** (same exception)   |
+
+---
+
+- `!` (null‑forgiving operator) **only affects the compiler**, not runtime.  
+- `.Value` **extracts the underlying int**, and **throws** if the value is null.  
+- `x!` is still **int?**, so it **cannot** be assigned to a non‑nullable `int`.  
+- `x!.Value` is the **only valid way** to convert a validated `int?` into an `int` without fallback values.
+
+---
+
 ## const vs readonly
 
 ### `const`
