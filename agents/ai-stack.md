@@ -175,3 +175,38 @@ Für einen typischen Entwickler‑Laptop mit 16–24 GB RAM/VRAM:
 ---
 
 Wenn du magst, kann ich dir als nächsten Schritt eine **konkrete `Modelfile` + Beispiel‑Config für Cline/Continue** bauen, exakt zugeschnitten auf deinen Hardware‑Level und deinen Node/TypeScript‑Workflow.
+
+# Setup opencode + ollama
+
+- Install Ollama: `winget install Ollama.Ollama`
+- Install OpenCode: `npm install -g opencode-ai` or `winget install SST.opencode`
+- Pull a model: `ollama pull qwen2.5-coder:14b`
+- Launch OpenCode with Ollama (in VS Code terminal): `ollama launch opencode`
+- in VS Code install `continue` extension and set provider to `Ollama` with base URL `http://localhost:11434` and model name `qwen2.5-coder:14b`
+
+   ```
+   name: Main Config
+
+   version: 1.0.0
+   schema: v1
+   models:
+
+   - name: Llama 3.1 8B
+      provider: ollama
+      model: llama3.1:8b
+      roles:
+   - chat
+   - edit
+   - apply
+   - name: Qwen2.5-Coder 1.5B
+      provider: ollama
+      model: qwen2.5-coder:1.5b-base
+      roles:
+   - autocomplete
+   - name: Nomic Embed
+      provider: ollama
+      model: nomic-embed-text:latest
+      roles:
+   - embed
+
+   ```
