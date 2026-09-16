@@ -5,6 +5,12 @@
 - `adb -s emulator-5554 shell settings put global anr_show_background 0`
 - `adb -s emulator-5554 shell setprop debug.anr.timeout_multiplier 100`
 
+- `adb -s emulator-5554 shell settings put global anr_show_background 0` ...Disable ANR dialog for background apps
+- `adb -s emulator-5554 shell setprop debug.anr.timeout_multiplier 100`   ... Increase ANR timeout threshold (100x) so debugger pauses don't trigger ANRs
+- `adb -s emulator-5554 shell settings put global hide_error_dialogs 1` ...Suppress all crash/ANR error dialogs globally (useful for CI/automation too)
+- `adb -s emulator-5554 shell settings put global wait_for_debugger 0`  ...Disable "Waiting for debugger" launch block (if Developer Options > Wait for debugger was set)
+- `adb -s emulator-5554 shell settings put global debug_app ''`
+
 ## Versions
 
 ### dotnet

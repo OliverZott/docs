@@ -11,6 +11,7 @@ e.g. https://ollama.com/library/qwen2.5-coder
 - **14b** refers to model size, measured in billions of parameters.
 - Parameters are the “neurons” of the model.
 - More parameters → more intelligence, better reasoning, better coding.
+- 💡 Think of parameters as the weight and bias that allow the model to learn patterns from data; without them, it cannot make predictions.
 
 ## Size
 
@@ -28,4 +29,4 @@ Rule of thumb:
 - 32K tokens ≈ ~24,000 words
 - You can paste huge files, long codebases, multi‑file projects.
 - It does not affect VRAM.
-- It affects how much text the model can “see” at once.
+- 💡 Context length determines the "window" of information the model can access in a single inference; it's critical for tasks like debugging entire systems or analyzing large reports but doesn't consume additional GPU memory beyond what's needed to hold the tokens.
