@@ -6,13 +6,15 @@ Rule of thumb:
 - Named volume = "Docker should own this, I just need it to persist."
 - External = "Compose must not create or delete this, it lives outside the project lifecycle."
 
-**Which one is "best practice" depends on who runs the host:**
+**Not dev vs prod decides, but who needs access to the files:**
 
-| Host | Use for persistent data |
-| --- | --- |
-| Own server / VM | Named volumes |
-| Shared / managed hosting | Bind mounts to an agreed absolute path |
-| Kubernetes | Persistent Volume Claims (PVC) |
+| Situation | Use | Why |
+| --- | --- | --- |
+| Dev: source code, config | Bind mount (relative `./src`) | edit on host, see changes live |
+| Dev: local database | Named volume | nobody touches files, `down -v` resets |
+| Prod: own server / VM | Named volume | Docker manages it, backup via `pg_dump` |
+| Prod: shared / managed hosting (e.g. AW at ITEG) | Bind mount (absolute path, agreed with hoster) | hoster's backups/quotas work on directories |
+| Prod: Kubernetes | Persistent Volume Claim (PVC) | platform provides storage |
 
 ## Bind Mounts
 
