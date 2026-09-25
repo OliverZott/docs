@@ -13,3 +13,5 @@ Image Building
 - `docker compose top`  ...Display the running processes
 
 - `docker compose up -d`  ...Create and start containers in the background
+- `docker compose pull`  ...Pull newer images
+- `docker compose down`  ...Stop and remove containers and networks (`-v` also removes named volumes!)

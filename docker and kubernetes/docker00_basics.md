@@ -1,14 +1,16 @@
 # Docker
 
+## Docker Compose
+
 - tool for defining and running multi-container Docker applications
 - uses YAML files to configure the application's services `docker-compose.yml`
-- all the containers are created in a single network
+- by default all containers of a project share one network (more can be defined)
 - to use V2 just use `docker compose` in cli!
 - docker compose is talking to docker cli api in background
 
 - workflow example:
   - `git clone repo`
-  - `docker-compose up`
+  - `docker compose up`
 
 ## Docker Concepts
 
@@ -24,7 +26,7 @@
 
 A docker image is a read-only template with instructions for creating a Docker container. Is consist of layers and in includes everything needed to run an application: code, runtime, system tools, system libraries, file system and settings.
 
-- contains of layers (depending on host os?!)
+- contains of layers, built for a specific OS/architecture (e.g. `linux/amd64`, `linux/arm64`); uses the host kernel
 
 ### Registry
 
@@ -33,13 +35,16 @@ A docker image is a read-only template with instructions for creating a Docker c
 ### Container
 
 - A docker container is a running instance of an image.
-- It's NOT just a small VM, it's just a process in dockers mini-linux-VM
+- It's NOT a small VM, it's an isolated process (namespaces, cgroups) on the host kernel
+- only Docker Desktop (Windows/Mac) runs it inside a small Linux VM
 
 ### Networks
 
 - Docker has default networks:
   - **bridge** for containers which is NATed behind host IP: `docker network ls` --> `bridge`
   - **host** less security, more performance
+  - **none** no networking
+- user-defined networks (incl. compose default) resolve containers by service name, default `bridge` does not
 
 ## Dockerfiles
 
@@ -52,8 +57,10 @@ e.g. `EXPOSE 8080`
 ```txt
 The EXPOSE instruction in a Dockerfile does not automatically publish the exposed port to the host machine. Instead, it serves as a form of documentation, indicating the ports that the container will listen on at runtime.
 
-The EXPOSE instruction informs Docker that the container will listen on the specified port(s) and allows other containers to communicate with it on those ports. However, it does not make the container's ports accessible from the host machine or the outside world by default.
 ```
+
+- Containers on the same network can reach **every** listening port, with or without `EXPOSE` or `ports:`
+- `EXPOSE` is documentation (+ used by `docker run -P`); `ports:` only publishes to the host
 
 ## Containers / Distros
 
