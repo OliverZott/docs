@@ -22,3 +22,6 @@
     int y = x.Value
     int y = x!.Value
     ```
+
+- 2026-10-14
+  - env variables general/docker
