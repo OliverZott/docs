@@ -1,0 +1,7 @@
+services:
+  ssh:
+    build: .
+    ports:
+      - "2222:22"
+    volumes:
+      - /:/host   # host filesystem, visible inside the container at /host
