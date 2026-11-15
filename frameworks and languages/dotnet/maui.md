@@ -43,6 +43,60 @@
 [lifecycle](https://dev.to/kcrnac/net-execution-process-explained-c-1b7a?form=MG0AV3)
 [lifecycle](https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/app-lifecycle?view=net-maui-9.0)
 
+## Under the hood (Android)
+
+### Is a MAUI app "native"?
+
+- **UI + packaging: yes** ...normal APK, entry point is a regular Android activity (`MainActivity`), controls become real Android views (`Label` → `TextView`, `Button` → Android button)
+- **C# logic: no** ...Android only runs Java/Kotlin bytecode or native machine code, not C#
+  - so the **.NET runtime ships inside every APK** (nothing has to be installed on the phone)
+  - start: Android starts `MainActivity` → loads the bundled .NET runtime → runs your C# (IL) → creates Android views via the Java ↔ .NET bridge
+  - consequence: bigger APK (~8 MB just for the runtime) and slightly slower startup than a Kotlin app
+
+What's inside a release APK (`unzip -l app-Signed.apk`, example net11 / arm64):
+
+| File (`lib/arm64-v8a/`) | What it is |
+|---|---|
+| `libcoreclr.so` | the .NET runtime (net11 uses CoreCLR on Android) |
+| `libclrjit.so` | JIT, compiles IL to ARM machine code at runtime |
+| `libassembly-store.so` | all .NET DLLs (own code, MAUI, NuGet packages) packed into one file |
+| `libe_sqlite3.so` | native libs from NuGet packages, e.g. SQLite |
+| `libmonodroid.so` | bridge between Android/Java and .NET |
+
+### RuntimeIdentifiers (RID)
+
+- C# is compiled **once** to IL (CPU independent)
+- the **native parts** (runtime, JIT, native NuGet libs) are built **once per RID** → one folder per CPU type in the APK
+  - `android-arm64` → `lib/arm64-v8a/` ...practically all real phones
+  - `android-x64` → `lib/x86_64/` ...mainly emulators on a PC
+- on install, Android picks the folder matching the phone's CPU, the rest is dead weight
+- default builds both `android-arm64` + `android-x64`
+- if the app is only sideloaded to a real phone, limit release builds to arm64 (example: APK 27.0 MB → 15.4 MB):
+
+```xml
+<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)'=='Release|net11.0-android'">
+    <RuntimeIdentifiers>android-arm64</RuntimeIdentifiers>
+</PropertyGroup>
+```
+
+- such an APK won't install on an x64 emulator → keep Debug builds multi-RID
+- not needed for Play Store: an AAB is split per CPU by Google Play anyway
+
+### Images: SVG → PNG (Resizetizer)
+
+- Android/iOS can't show SVG in an `Image` → at **build time** MAUI's *Resizetizer* converts every `MauiImage` SVG into PNGs, one per screen density (mdpi 1× … xxxhdpi 4×)
+- only the PNGs go into the APK, the SVG is not shipped; `Source="weight"` loads `weight.png`
+- see them in `obj/Debug/net11.0-android/resizetizer/r/drawable-*/`
+- the **base size** in dp comes from the SVG's `width`/`height` (or `viewBox` if missing)
+  - pitfall: `width="512pt"` or `viewBox="0 0 1000 1000"` → 2732 px / 4000 px PNGs for an icon shown at 44dp (≈ 64 MB RAM when decoded)
+  - fix: set `BaseSize` to the display size in the csproj (SVG stays untouched):
+
+```xml
+<MauiImage Include="Resources\Images\*" />
+<MauiImage Update="Resources\Images\dino.svg" BaseSize="24,24" />
+<MauiImage Update="Resources\Images\weight.svg" BaseSize="48,48" />
+```
+
 ## Basic structure
 
 - `App.xaml` used to define shared resources like styles and themes for your application (defined in Resource folder)
