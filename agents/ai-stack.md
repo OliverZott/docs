@@ -40,6 +40,8 @@ Sie sind „Gehirn + Körper + Werkzeuge“.
 - Die „Claude Code“/„Codex“‑Namen sind **Workflows/Branding**, nicht die echten Cloud‑Produkte von Anthropic/OpenAI.  
 - Sie laufen **lokal** und sprechen mit deinem **Ollama‑Server** oder einem anderen LLM‑Runtime.
 
+Wie die Agent‑Schleife genau funktioniert (wer entscheidet was) und was RAG ist: siehe [rag-and-agents.md](rag-and-agents.md).
+
 ---
 
 ## Ollama
